@@ -26,7 +26,7 @@ const SignupForm: React.FC = () => {
     // Demo submission: log form values (DO NOT log passwords in production)
     console.log("Signup submitted:", { email, password });
 
-    setSuccess("Account created (demo).");
+    setSuccess("Account created.");
     // Reset or further actions can be performed here
   };
 
