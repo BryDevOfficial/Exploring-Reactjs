@@ -32,7 +32,7 @@ const SignupForm: React.FC = () => {
 
   return (
     <section className="bg-gray-900 text-white min-h-screen">
-      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:h-screen lg:py-0">
+      <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto md:min-h-screen lg:py-0">
 
         <div className="w-full bg-gray-800 rounded-lg shadow border border-gray-700 md:max-w-2xl lg:max-w-4xl xl:p-0">
           <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
