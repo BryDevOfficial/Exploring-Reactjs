@@ -18,8 +18,8 @@ function CottageBookingCard({ cottageName, capacity, isPromoActive }: BookingPro
 
     return (
         <div style={{
-            border: isSelected ? '2px solid #007bff' : '1px solid #ddd', // Ternary for border
-            backgroundColor: isSelected ? '#f0f7ff' : '#fff',           // Ternary for background
+            border: isSelected ? '2px solid #28ec3291' : '1px solid #ddd', // Ternary for border
+            backgroundColor: isSelected ? '#094125ff' : '#112b53ff',           // Ternary for background
             padding: '20px',
             borderRadius: '12px',
             width: '250px',

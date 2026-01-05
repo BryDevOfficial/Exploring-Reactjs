@@ -4,6 +4,7 @@ import FunctionalDynamicProps from './components/FunctionalDynamicProps'
 import CottageItem from './components/CottageItem'
 import CottageItemUseStateHook from './components/useState-hook/CottageItemUseStateHook'
 import CottageItemMaintenance from './components/useState-hook/CottageItemMaintenance'
+import CottageBookingCard from './components/useState-hook/CottageBookingCard'
 import './App.css'
 
 function App() {
@@ -18,8 +19,9 @@ function App() {
      <CottageItem name="Cottage #2" price={550} description="A big size cottage near the white beach with peso wifi" imgurl="https://picsum.photos/200/300" status='available' />
      <CottageItem name="Cottage #1" price={650} description="A medium size cottage near the white beach with peso wifi" imgurl="https://picsum.photos/200/300" status='unavailable' />
      <CottageItemUseStateHook name="Cottage #2" price={550} description="A big size cottage near the white beach with peso wifi" imgurl="https://picsum.photos/200/300" status='available' />
+     <CottageItemMaintenance name="Cottage #1" price={650} description="A medium size cottage near the white beach with peso wifi" imgurl="https://picsum.photos/200/300" status='maintenance' />s
      */}
-     <CottageItemMaintenance name="Cottage #1" price={650} description="A medium size cottage near the white beach with peso wifi" imgurl="https://picsum.photos/200/300" status='maintenance' />
+     <CottageBookingCard cottageName="Cottage #5" capacity={6} isPromoActive={true} />
     </>
   )
 }
