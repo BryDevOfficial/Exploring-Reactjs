@@ -9,3 +9,6 @@ export default function ProductCard(props: any) {
         </div>
     )
 }
+
+// Usage example:
+// <ProductCard name="Laptop" price="$999" />
