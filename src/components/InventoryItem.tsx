@@ -23,3 +23,5 @@ function InventoryItem({ name, quantity, category }: InventoryItemProps) {
 }
 
 export default InventoryItem;
+
+// Example usage: <InventoryItem name="Soap" quantity="15" category="Hygiene" />
