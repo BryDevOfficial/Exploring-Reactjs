@@ -1,3 +1,5 @@
+import React, { useState } from 'react';
+
 interface CottageProps {
     name: string;
     price: number;
@@ -6,23 +8,20 @@ interface CottageProps {
     status: 'available' | 'unavailable';
 }
 
-function CottageItemUseStateHook({name, price, description, imgurl, status}: CottageProps) {
+function CottageItemUseStateHook({name, price, description, imgurl, status: initialStatus}: CottageProps) {
    
-    const statusColor = status === 'available' ? 'green' : 'red';
+    // Initialize state for the cottage's availability status with prop value
+    const [currentStatus, setCurrentStatus] = useState(initialStatus);
 
-    return (
-        <div
-      style={{ border: "1px solid #ccc", padding: "15px", borderRadius: "8px" }}
-    >
+    // Define the toggle function since I want to make the cottage status changeable whenever I click the Status (I am using arrow function below)
+    const toggleStatus = () => {
+        setCurrentStatus((prev) => (prev === 'available' ? 'unavailable' : 'available')); //Honestly I don't fully undestand yet the part where it use PREV, need more research about it
+    };
 
-        <h3>{name}</h3>
-        <img src={imgurl} alt={name} style={{ width: '200px', height: '150px', objectFit: 'cover' }} />
-        <p>{description}</p>
-        <p>Price: {price} pesos</p>
-        <p>Status: <span style={{ color: statusColor }}>{status === 'available' ? 'Available' : 'Unavailable'}</span></p>
+    //Below is a ternary operator where I define variable using const statusColor, and using the state currentStatus to determine and assign color base on availability, if available then green else is red.
+    const statusColor = currentStatus === 'available' ? 'green' : 'red'; 
 
-    </div>
-    )
+    
 }
 
 export default CottageItemUseStateHook;
