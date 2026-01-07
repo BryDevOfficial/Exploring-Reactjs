@@ -59,7 +59,13 @@ function QuickBooking({cottageName,customerName, nights, ...rest}: QuickBookingP
         }}
         >{booking.isConfirmed ? "Booking Confirmed!" : "Pending Confirmation"}</p>
         
-        
+        <div style={
+            {
+            display:'flex',
+            flexDirection: 'column',
+            gap: '10px'
+            }
+        }>
         <button onClick={() => handleNameChange("BryDev")}>
         Change Customer Name
         </button>
@@ -71,6 +77,7 @@ function QuickBooking({cottageName,customerName, nights, ...rest}: QuickBookingP
         }} onClick={() => setBooking((prev) => ({ ...prev, isConfirmed: !prev.isConfirmed }))}>
         Confirm Booking
         </button>
+        </div>
 
 
     </div>
