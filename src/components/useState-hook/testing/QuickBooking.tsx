@@ -21,7 +21,7 @@ function QuickBooking({cottageName,customerName, nights, ...rest}: QuickBookingP
   const handleNameChange = (newName: string) => {
     setBooking((prev) => ({
         ...prev,
-        customer: newName
+        customer: prev.customer === newName ? customerName: newName
     }))
   }
 
