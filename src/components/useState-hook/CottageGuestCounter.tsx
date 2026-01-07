@@ -29,13 +29,13 @@ function CottageGuestCounter({ cottageName, maxCapacity, ...rest }: GuestCounter
             padding: "20px",
             border: "1px solid #ddd",
             borderRadius: "15px",
-            backgroundColor: "#fff",
+            backgroundColor: "#223151",
             textAlign: "center",
             width: "250px",
             boxShadow: "0 4px 6px rgba(0,0,0,0.1)"
         }}>
             <h4 style={{ margin: "0 0 10px 0" }}>{cottageName}</h4>
-            <p style={{ fontSize: "12px", color: "#666" }}>Max Capacity: {maxCapacity}</p>
+            <p style={{ fontSize: "12px", color: "#ceb31aff" }}>Max Capacity: {maxCapacity}</p>
 
             <div style={{ 
                 display: "flex", 
