@@ -4,19 +4,24 @@ interface QuickBookingProps {
     cottageName: string;
     customerName: string;
     nights: number;
+    pricePerNight: number;
 
 }
 
-function QuickBooking({cottageName,customerName, nights, ...rest}: QuickBookingProps) {
-
+function QuickBooking({cottageName, customerName, nights, pricePerNight, ...rest}: QuickBookingProps) {
+  
   const [booking, setBooking] = useState(
     {
-    cottage: cottageName,
     customer: customerName,
     nightsBooked: nights,
-    isConfirmed: false
+    isConfirmed: false,
+    hasDiscount: false
     }
   );
+
+  const subTotal = booking.nightsBooked * pricePerNight;
+  const discountedAmount = booking.hasDiscount ? subTotal * 0.1 : 0;
+  const totalPrice = subTotal - discountedAmount;
 
   const handleNameChange = (newName: string) => {
     setBooking((prev) => ({
@@ -28,8 +33,13 @@ function QuickBooking({cottageName,customerName, nights, ...rest}: QuickBookingP
   const handleNightsChange = () => {
     setBooking((prev) => ({
         ...prev,
-        nightsBooked: prev.nightsBooked + 1
+        nightsBooked: prev.nightsBooked + 1,
+        totalPrice: (prev.nightsBooked + 1) * pricePerNight
     }))
+  }
+
+  const toggleDiscount = () => {
+    setBooking(prev => ({ ...prev, hasDiscount: !prev.hasDiscount }));
   }
 
   return (
@@ -48,10 +58,12 @@ function QuickBooking({cottageName,customerName, nights, ...rest}: QuickBookingP
     }}
     >
         {booking.isConfirmed ? '✅' : '🕛'}
-        <h3>{booking.cottage}</h3>
+        <h3>{cottageName}</h3>
         <h4>Quick Booking</h4>
         <p><strong>Customer:</strong> {booking.customer}</p>
-        <p><strong>Nights:</strong> {booking.nightsBooked}</p>
+        <p><strong>Nights:</strong>  {booking.nightsBooked}</p>
+        <p>Price Per Night: {pricePerNight}</p>
+        <p>Total: ₱{totalPrice} {booking.hasDiscount && "(10% Off!)"}</p>
         <p
         style = {{
         color: booking.isConfirmed ? 'lightgreen' : 'orange',
@@ -71,12 +83,14 @@ function QuickBooking({cottageName,customerName, nights, ...rest}: QuickBookingP
         </button>
 
         <button onClick={handleNightsChange}>Add Night</button>
-
         <button style={{
             backgroundColor: booking.isConfirmed ? 'green' : 'gray',
         }} onClick={() => setBooking((prev) => ({ ...prev, isConfirmed: !prev.isConfirmed }))}>
         Confirm Booking
         </button>
+        <button onClick={toggleDiscount}>
+        {booking.hasDiscount ? "Remove Discount" : "Apply 10% Discount"}
+       </button>
         </div>
 
 
