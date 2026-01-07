@@ -31,7 +31,7 @@ function App() {
      <CottageGuestCounter cottageName="Cottage #3" maxCapacity={15} />
      <CottageEditor initialName="Cottage #7" initialPrice={800} style={{ marginTop: '20px' }} />
      */}
-     <QuickBooking cottageName="Cottage #1" customerName="John Doe" nights={3} pricePerNight={500} />
+     <QuickBooking cottageName="Cottage #1" customerName="John Doe" nights={3} pricePerNight={100} />
     </>
   )
 }

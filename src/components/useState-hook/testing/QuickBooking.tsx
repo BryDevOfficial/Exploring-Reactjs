@@ -33,8 +33,7 @@ function QuickBooking({cottageName, customerName, nights, pricePerNight, ...rest
   const handleNightsChange = () => {
     setBooking((prev) => ({
         ...prev,
-        nightsBooked: prev.nightsBooked + 1,
-        totalPrice: (prev.nightsBooked + 1) * pricePerNight
+        nightsBooked: prev.nightsBooked + 1
     }))
   }
 
