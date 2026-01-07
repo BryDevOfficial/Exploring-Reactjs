@@ -5,7 +5,7 @@ interface EditorProps {
     initialPrice: number;
 }
 
-function CottageEditor() {
+function CottageEditor({initialName, initialPrice, ...rest}: EditorProps) {
   return (
     <div>CottageEditor</div>
   )
