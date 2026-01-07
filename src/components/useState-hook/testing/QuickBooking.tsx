@@ -25,6 +25,13 @@ function QuickBooking({cottageName,customerName, nights, ...rest}: QuickBookingP
     }))
   }
 
+  const handleNightsChange = () => {
+    setBooking((prev) => ({
+        ...prev,
+        nightsBooked: prev.nightsBooked + 1
+    }))
+  }
+
   return (
     <div
     {...rest}
@@ -32,7 +39,7 @@ function QuickBooking({cottageName,customerName, nights, ...rest}: QuickBookingP
         padding: '45px',
         border: '2px solid #2ecc71',
         borderRadius: '10px',
-        backgroundColor: booking.isConfirmed ? '#27ae60' : '#ecf0f1',
+        backgroundColor: booking.isConfirmed ? '#274baeff' : '#fdefffff',
         color: booking.isConfirmed ? 'white' : 'black',
         width: '250px',
         textAlign: 'center',
@@ -40,13 +47,30 @@ function QuickBooking({cottageName,customerName, nights, ...rest}: QuickBookingP
         
     }}
     >
+        {booking.isConfirmed ? '✅' : '🕛'}
         <h3>{booking.cottage}</h3>
         <h4>Quick Booking</h4>
         <p><strong>Customer:</strong> {booking.customer}</p>
         <p><strong>Nights:</strong> {booking.nightsBooked}</p>
-        <p>{booking.isConfirmed ? "Booking Confirmed!" : "Pending Confirmation"}</p>
+        <p
+        {...rest}
+        style = {{
+        color: booking.isConfirmed ? 'lightgreen' : 'orange',
+        fontWeight: 'bold'
+        }}
+        >{booking.isConfirmed ? "Booking Confirmed!" : "Pending Confirmation"}</p>
+        
+        
         <button onClick={() => handleNameChange("BryDev")}>
         Change Customer Name
+        </button>
+
+        <button onClick={handleNightsChange}>Add Night</button>
+
+        <button style={{
+            backgroundColor: booking.isConfirmed ? 'green' : 'gray',
+        }} onClick={() => setBooking((prev) => ({ ...prev, isConfirmed: true }))}>
+        Confirm Booking
         </button>
 
 
