@@ -10,6 +10,7 @@ import './App.css'
 import AmenityCard from './components/useState-hook/AmenityCard';
 import CottageGuestCounter from './components/useState-hook/CottageGuestCounter'
 import CottageEditor from './components/useState-hook/CottageEditor'
+import QuickBooking from './components/useState-hook/testing/QuickBooking'
 
 function App() {
 
@@ -28,8 +29,9 @@ function App() {
      <CottageBookingCard cottageName="Cottage #5" capacity={6} isPromoActive={true} />
      <AmenityCard cottageName="Cottage #10" basePrice={1200} id="amenity-card-1" className="custom-amenity-card" />
      <CottageGuestCounter cottageName="Cottage #3" maxCapacity={15} />
-     */}
      <CottageEditor initialName="Cottage #7" initialPrice={800} style={{ marginTop: '20px' }} />
+     */}
+     <QuickBooking cottageName="Cottage #1" customerName="John Doe" nights={3} />
     </>
   )
 }
