@@ -53,7 +53,6 @@ function QuickBooking({cottageName,customerName, nights, ...rest}: QuickBookingP
         <p><strong>Customer:</strong> {booking.customer}</p>
         <p><strong>Nights:</strong> {booking.nightsBooked}</p>
         <p
-        {...rest}
         style = {{
         color: booking.isConfirmed ? 'lightgreen' : 'orange',
         fontWeight: 'bold'
@@ -69,7 +68,7 @@ function QuickBooking({cottageName,customerName, nights, ...rest}: QuickBookingP
 
         <button style={{
             backgroundColor: booking.isConfirmed ? 'green' : 'gray',
-        }} onClick={() => setBooking((prev) => ({ ...prev, isConfirmed: true }))}>
+        }} onClick={() => setBooking((prev) => ({ ...prev, isConfirmed: !prev.isConfirmed }))}>
         Confirm Booking
         </button>
 
