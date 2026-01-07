@@ -9,6 +9,7 @@ import ColorSwitch from './components/useState-hook/ColorSwitch';
 import './App.css'
 import AmenityCard from './components/useState-hook/AmenityCard';
 import CottageGuestCounter from './components/useState-hook/CottageGuestCounter'
+import CottageEditor from './components/useState-hook/CottageEditor'
 
 function App() {
 
@@ -26,8 +27,9 @@ function App() {
      <CottageItemMaintenance name="Cottage #1" price={650} description="A medium size cottage near the white beach with peso wifi" imgurl="https://picsum.photos/200/300" status='maintenance' />s
      <CottageBookingCard cottageName="Cottage #5" capacity={6} isPromoActive={true} />
      <AmenityCard cottageName="Cottage #10" basePrice={1200} id="amenity-card-1" className="custom-amenity-card" />
-     */}
      <CottageGuestCounter cottageName="Cottage #3" maxCapacity={15} />
+     */}
+     <CottageEditor initialName="Cottage #7" initialPrice={800} style={{ marginTop: '20px' }} />
     </>
   )
 }

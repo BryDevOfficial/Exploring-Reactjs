@@ -3,6 +3,7 @@ import { useState } from 'react'
 interface EditorProps {
     initialName: string;
     initialPrice: number;
+    style?: React.CSSProperties;
 }
 
 function CottageEditor({initialName, initialPrice, ...rest}: EditorProps) {
