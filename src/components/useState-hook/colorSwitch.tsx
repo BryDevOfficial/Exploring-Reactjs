@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
 interface ColorSwitchProps {
-    colors: "red" | "green" | "blue";
+    backgroundColor: "red" | "green" | "blue";
 }
 
-function ColorSwitch({colors: defaultColor}: ColorSwitchProps)
+function ColorSwitch({backgroundColor: defaultColor}: ColorSwitchProps)
 {
     const [currentColor, setCurrentColor] = useState<string>(defaultColor);
 
@@ -16,7 +16,7 @@ function ColorSwitch({colors: defaultColor}: ColorSwitchProps)
     return (
 
         <>
-        <button style= {{color: currentColor, cursor: "pointer"}} onClick={handleSwitchColor}>Click Me</button>
+        <button style= {{backgroundColor: currentColor, cursor: "pointer"}} onClick={handleSwitchColor}>Click Me</button>
         </>
     )
 

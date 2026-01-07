@@ -23,7 +23,7 @@ function App() {
      <CottageItemMaintenance name="Cottage #1" price={650} description="A medium size cottage near the white beach with peso wifi" imgurl="https://picsum.photos/200/300" status='maintenance' />s
      <CottageBookingCard cottageName="Cottage #5" capacity={6} isPromoActive={true} />
      */}
-     <ColorSwitch colors="blue" />
+     <ColorSwitch backgroundColor='red' />
     </>
   )
 }
