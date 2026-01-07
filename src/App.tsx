@@ -5,8 +5,8 @@ import CottageItem from './components/CottageItem'
 import CottageItemUseStateHook from './components/useState-hook/CottageItemUseStateHook'
 import CottageItemMaintenance from './components/useState-hook/CottageItemMaintenance'
 import CottageBookingCard from './components/useState-hook/CottageBookingCard'
+import ColorSwitch from './components/useState-hook/ColorSwitch';
 import './App.css'
-import ColorSwitch from './components/useState-hook/colorSwitch'
 import AmenityCard from './components/useState-hook/AmenityCard';
 
 function App() {
