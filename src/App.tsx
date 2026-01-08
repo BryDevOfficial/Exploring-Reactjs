@@ -13,6 +13,7 @@ import CottageEditor from './components/useState-hook/CottageEditor'
 import QuickBooking from './components/useState-hook/testing/QuickBooking'
 import CottageAddons from './components/useState-hook/testing/CottageAddons'
 import GuestRegistration from './components/event-handling/GuestRegistration'
+import ProductEntry from './components/event-handling/exercise/ProductEntry'
 
 function App() {
 
@@ -34,8 +35,9 @@ function App() {
      <CottageEditor initialName="Cottage #7" initialPrice={800} style={{ marginTop: '20px' }} />
      <QuickBooking cottageName="Cottage #1" customerName="John Doe" nights={3} pricePerNight={100} />
      <CottageAddons cottage="Cottage #1" basePrice={550} />
-     */}
      <GuestRegistration />
+     */}
+     <ProductEntry />
     </>
   )
 }
