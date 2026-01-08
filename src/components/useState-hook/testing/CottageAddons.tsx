@@ -12,22 +12,33 @@ function CottageAddons({ cottage, basePrice, ...rest }: CottageAddonsProps) {
         {
             wifi: false,
             breakfast: false,
-            tour: false
+            tour: false,
+            kayak: false,
+            videoky: false
         }
     );
 
 const services = {
-    wifiPrice: 100,
-    breakfastPrice: 500,
-    tour: 1200
+    wifi: 100,
+    breakfast: 500,
+    tour: 1200,
+    kayak: 800,
+    videoky: 1000
 }
 
+/*
+My first attempt at calculating total price
 const total = basePrice +
     (addons.wifi ? services.wifiPrice : 0) +
     (addons.breakfast ? services.breakfastPrice : 0) +
-    (addons.tour ? services.tour : 0);
+    (addons.tour ? services.tour : 0);*/
 
-const handleAddon = (addon: 'wifi' | 'breakfast' | 'tour') => {
+/*Advanced way to calculate total price in object*/
+const total = basePrice + (Object.keys(addons) as Array<keyof typeof addons>).reduce((acc, key) => {
+    return addons[key] ? acc + services[key] : acc;
+}, 0);
+
+const handleAddon = (addon: keyof typeof addons) => {
     setAddons((prev) => ({
         ...prev,
         [addon]: !prev[addon]
@@ -51,36 +62,19 @@ const handleAddon = (addon: 'wifi' | 'breakfast' | 'tour') => {
         <p>Base Price: ₱{basePrice}</p>
         <p><strong>Total Price: ₱{total}</strong></p>
         <ul style={{ listStyleType: 'none', padding: 0 }}>
-            <li>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={addons.wifi}
-                        onChange={() => handleAddon('wifi')}
-                    />
-                    WiFi (₱{services.wifiPrice})
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={addons.breakfast}
-                        onChange={() => handleAddon('breakfast')}
-                    />
-                    Breakfast (₱{services.breakfastPrice})
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={addons.tour}
-                        onChange={() => handleAddon('tour')}
-                    />
-                    Tour (₱{services.tour})
-                </label>
-            </li>
+           {
+            (Object.keys(addons) as Array<keyof typeof addons>).map((key) => (
+                <li key={key} style={{ marginBottom: '10px' }}>
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={addons[key]}
+                            onChange={() => handleAddon(key)}
+                        />
+                        {key.charAt(0).toUpperCase() + key.slice(1)} (₱{services[key]})
+                    </label>
+                </li>
+            ))}
         </ul>
     </div>
   )
