@@ -12,14 +12,18 @@ function CottageAddons({ cottage, basePrice, ...rest }: CottageAddonsProps) {
         {
             wifi: false,
             breakfast: false,
-            tour: false
+            tour: false,
+            kayak: false,
+            videoky: false
         }
     );
 
 const services = {
     wifi: 100,
     breakfast: 500,
-    tour: 1200
+    tour: 1200,
+    kayak: 800,
+    videoky: 1000
 }
 
 /*
@@ -34,7 +38,7 @@ const total = basePrice + (Object.keys(addons) as Array<keyof typeof addons>).re
     return addons[key] ? acc + services[key] : acc;
 }, 0);
 
-const handleAddon = (addon: 'wifi' | 'breakfast' | 'tour') => {
+const handleAddon = (addon: keyof typeof addons) => {
     setAddons((prev) => ({
         ...prev,
         [addon]: !prev[addon]
@@ -58,36 +62,19 @@ const handleAddon = (addon: 'wifi' | 'breakfast' | 'tour') => {
         <p>Base Price: ₱{basePrice}</p>
         <p><strong>Total Price: ₱{total}</strong></p>
         <ul style={{ listStyleType: 'none', padding: 0 }}>
-            <li>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={addons.wifi}
-                        onChange={() => handleAddon('wifi')}
-                    />
-                    WiFi (₱{services.wifi})
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={addons.breakfast}
-                        onChange={() => handleAddon('breakfast')}
-                    />
-                    Breakfast (₱{services.breakfast})
-                </label>
-            </li>
-            <li>
-                <label>
-                    <input
-                        type="checkbox"
-                        checked={addons.tour}
-                        onChange={() => handleAddon('tour')}
-                    />
-                    Tour (₱{services.tour})
-                </label>
-            </li>
+           {
+            (Object.keys(addons) as Array<keyof typeof addons>).map((key) => (
+                <li key={key} style={{ marginBottom: '10px' }}>
+                    <label>
+                        <input
+                            type="checkbox"
+                            checked={addons[key]}
+                            onChange={() => handleAddon(key)}
+                        />
+                        {key.charAt(0).toUpperCase() + key.slice(1)} (₱{services[key]})
+                    </label>
+                </li>
+            ))}
         </ul>
     </div>
   )
