@@ -17,15 +17,22 @@ function CottageAddons({ cottage, basePrice, ...rest }: CottageAddonsProps) {
     );
 
 const services = {
-    wifiPrice: 100,
-    breakfastPrice: 500,
+    wifi: 100,
+    breakfast: 500,
     tour: 1200
 }
 
+/*
+My first attempt at calculating total price
 const total = basePrice +
     (addons.wifi ? services.wifiPrice : 0) +
     (addons.breakfast ? services.breakfastPrice : 0) +
-    (addons.tour ? services.tour : 0);
+    (addons.tour ? services.tour : 0);*/
+
+/*Advanced way to calculate total price in object*/
+const total = basePrice + (Object.keys(addons) as Array<keyof typeof addons>).reduce((acc, key) => {
+    return addons[key] ? acc + services[key] : acc;
+}, 0);
 
 const handleAddon = (addon: 'wifi' | 'breakfast' | 'tour') => {
     setAddons((prev) => ({
@@ -58,7 +65,7 @@ const handleAddon = (addon: 'wifi' | 'breakfast' | 'tour') => {
                         checked={addons.wifi}
                         onChange={() => handleAddon('wifi')}
                     />
-                    WiFi (₱{services.wifiPrice})
+                    WiFi (₱{services.wifi})
                 </label>
             </li>
             <li>
@@ -68,7 +75,7 @@ const handleAddon = (addon: 'wifi' | 'breakfast' | 'tour') => {
                         checked={addons.breakfast}
                         onChange={() => handleAddon('breakfast')}
                     />
-                    Breakfast (₱{services.breakfastPrice})
+                    Breakfast (₱{services.breakfast})
                 </label>
             </li>
             <li>
