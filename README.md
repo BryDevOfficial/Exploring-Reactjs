@@ -1,4 +1,4 @@
-# React + TypeScript + Vite \ Week 1  | DAILY 2-HOUR ROUTINE
+# Week 1  | DAILY 2-HOUR ROUTINE - React + TypeScript + Vite
 
 This directory `explore-react-tailwindcss` is a testing ground to react fundamental, from understanding useState, Toggle, OnChange, and OnClick. I tried to make it 3 hours and minimum of 2 hours for daily coding routine, then do review of things by Sunday.
 
