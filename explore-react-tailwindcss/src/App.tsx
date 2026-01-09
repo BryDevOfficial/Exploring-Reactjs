@@ -5,6 +5,7 @@ import ProductEntry from './components/ProductEntry'
 import SeaEagleLogin from './components/SeaEagleLogin'
 import CottageCard from './components/CottageCard'
 import CottageForm from './components/CottageForm'
+import KeyObject from './components/KeyObject'
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
       <CottageCard name="Cottage 1" type="Family Cottage" status="available"price={5000} />
       */}
       <CottageForm />
+      <KeyObject />
     </div>
   )
 }
