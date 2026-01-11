@@ -7,6 +7,7 @@ import CottageCard from './components/CottageCard'
 import CottageForm from './components/CottageForm'
 import KeyObject from './components/KeyObject'
 import CottageBookingPro from './components/CottageBookingPro'
+import CottageBookingConfirmed from './components/CottageBookingConfirmed'
 
 
 function App() {
@@ -19,8 +20,9 @@ function App() {
       <CottageCard name="Cottage 1" type="Family Cottage" status="available"price={5000} />
       <CottageForm />
       <KeyObject />
-      */}
       <CottageBookingPro />
+      */}
+      <CottageBookingConfirmed />
     </div>
   )
 }
