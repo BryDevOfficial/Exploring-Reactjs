@@ -6,6 +6,7 @@ import SeaEagleLogin from './components/SeaEagleLogin'
 import CottageCard from './components/CottageCard'
 import CottageForm from './components/CottageForm'
 import KeyObject from './components/KeyObject'
+import CottageBookingPro from './components/CottageBookingPro'
 
 
 function App() {
@@ -16,9 +17,10 @@ function App() {
        <SeaEagleLogin />
        * 
       <CottageCard name="Cottage 1" type="Family Cottage" status="available"price={5000} />
-      */}
       <CottageForm />
       <KeyObject />
+      */}
+      <CottageBookingPro />
     </div>
   )
 }
