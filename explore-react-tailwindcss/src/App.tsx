@@ -8,6 +8,7 @@ import CottageForm from './components/CottageForm'
 import KeyObject from './components/KeyObject'
 import CottageBookingPro from './components/CottageBookingPro'
 import CottageBookingConfirmed from './components/CottageBookingConfirmed'
+import TheGuestFinder from './components/TheGuestFinder'
 
 
 function App() {
@@ -21,8 +22,9 @@ function App() {
       <CottageForm />
       <KeyObject />
       <CottageBookingPro />
-      */}
       <CottageBookingConfirmed />
+      */}
+      <TheGuestFinder />
     </div>
   )
 }
