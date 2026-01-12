@@ -73,6 +73,8 @@ export default function StaffPayrollManager() {
             name="deptQuery"
             className="w-full p-2 border-b-2 border-slate-100 outline-none focus:border-indigo-500"
             placeholder="e.g. Kitchen"
+            onChange={handleChange}
+            value={filters.deptQuery}
           />
         </div>
         <div>
@@ -82,6 +84,8 @@ export default function StaffPayrollManager() {
             type="number" 
             name="minSalary"
             className="w-full p-2 border-b-2 border-slate-100 outline-none focus:border-indigo-500"
+            onChange={handleChange}
+            value={Number(filters.minSalary)}
           />
         </div>
       </div>
