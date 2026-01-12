@@ -10,8 +10,8 @@ const GuestCard = ({ name, room }: { name: string; room: string }) => {
   );
 };
 
-export default function GuestFinder() {
-  // 2. MOCK DATA: Our "Database" for testing
+export default function TheGuestFinder() {
+  // 2. MOCK DATA: The "Database" for testing
   const bookings = [
     { id: 1, name: 'Juan Dela Cruz', room: 'Sea Eagle 01' },
     { id: 2, name: 'Maria Santos', room: 'Deluxe 05' },
