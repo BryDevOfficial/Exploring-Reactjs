@@ -41,6 +41,11 @@ export default function StaffPayrollManager() {
   // Create a universal handleChange function that updates the 'filters' object.
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // ... use the "Triangle of Truth" logic here
+    const {name, value} = e.target;
+    setFilters((prev) => ({
+      ...prev,
+      [name]: value
+    }))
   };
 
   // Task 4: The Logic Filter & Calculation
