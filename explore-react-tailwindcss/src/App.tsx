@@ -9,6 +9,7 @@ import KeyObject from './components/KeyObject'
 import CottageBookingPro from './components/CottageBookingPro'
 import CottageBookingConfirmed from './components/CottageBookingConfirmed'
 import TheGuestFinder from './components/TheGuestFinder'
+import StaffPayrollManager from './components/Exercise/StaffPayrollManager'
 
 
 function App() {
@@ -23,8 +24,9 @@ function App() {
       <KeyObject />
       <CottageBookingPro />
       <CottageBookingConfirmed />
-      */}
       <TheGuestFinder />
+      */}
+      <StaffPayrollManager />
     </div>
   )
 }

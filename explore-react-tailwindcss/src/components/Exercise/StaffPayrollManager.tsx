@@ -54,7 +54,10 @@ export default function StaffPayrollManager() {
   const processedStaff = staffData.filter(staff => {
     const totalPay = staff.dailyRate * staff.daysWorked;
     // ... return the condition for the filter
-    staff.dept.toLocaleLowerCase().includes(filters.deptQuery.toLocaleLowerCase());
+    return (
+      staff.dept.toLocaleLowerCase().includes(filters.deptQuery.toLocaleLowerCase()) && totalPay >= filters.minSalary
+    );
+    
   });
 
   return (
