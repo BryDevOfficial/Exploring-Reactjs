@@ -97,7 +97,8 @@ export default function RoomStatusDashboard() {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Task 8: Map the filteredRooms */}
           {filteredRooms.map(room => (
-            <RoomCard roomNumber={room.roomNumber} floor={room.floor} isClean={filters.onlyDirty} />
+            <RoomCard key={room.id} roomNumber={room.roomNumber} floor={room.floor} isClean={room.isClean} />
+            
           ))}
           {/* Task 9: Show "All rooms are clean!" if list is empty */}
         </div>
