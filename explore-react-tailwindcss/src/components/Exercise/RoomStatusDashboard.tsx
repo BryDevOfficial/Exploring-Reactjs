@@ -101,6 +101,12 @@ export default function RoomStatusDashboard() {
             
           ))}
           {/* Task 9: Show "All rooms are clean!" if list is empty */}
+          {/* Hint: If filteredRooms length is 0, show a message */}
+            {filteredRooms.length === 0 && (
+              <p className="col-span-full text-center text-slate-400 py-10">
+                Everything is spotless! No matches found {filters.search}. 
+              </p>
+            )}
         </div>
       </div>
     </div>
