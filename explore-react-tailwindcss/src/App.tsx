@@ -29,8 +29,8 @@ function App() {
       <TheGuestFinder />
       <StaffPayrollManager />
       <SeaEagleInventory />
-      */}
       <RoomStatusDashboard />
+      */}
     </div>
   )
 }
