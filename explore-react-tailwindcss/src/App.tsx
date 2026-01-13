@@ -10,6 +10,7 @@ import CottageBookingPro from './components/CottageBookingPro'
 import CottageBookingConfirmed from './components/CottageBookingConfirmed'
 import TheGuestFinder from './components/TheGuestFinder'
 import StaffPayrollManager from './components/Exercise/StaffPayrollManager'
+import SeaEagleInventory from './components/Exercise/SeaEagleInventory'
 
 
 function App() {
@@ -25,8 +26,9 @@ function App() {
       <CottageBookingPro />
       <CottageBookingConfirmed />
       <TheGuestFinder />
-      */}
       <StaffPayrollManager />
+      */}
+      <SeaEagleInventory />
     </div>
   )
 }
