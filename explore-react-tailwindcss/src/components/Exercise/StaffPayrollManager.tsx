@@ -44,7 +44,7 @@ export default function StaffPayrollManager() {
     const {name, value} = e.target;
     setFilters((prev) => ({
       ...prev,
-      [name]: value
+      [name]: value === 'minSalary' ? Number(value) : value
     }))
   };
 
@@ -54,7 +54,10 @@ export default function StaffPayrollManager() {
   const processedStaff = staffData.filter(staff => {
     const totalPay = staff.dailyRate * staff.daysWorked;
     // ... return the condition for the filter
-    return true; // placeholder
+    return (
+      staff.dept.toLocaleLowerCase().includes(filters.deptQuery.toLocaleLowerCase()) && totalPay >= Number(filters.minSalary)
+    );
+    
   });
 
   return (
@@ -70,6 +73,8 @@ export default function StaffPayrollManager() {
             name="deptQuery"
             className="w-full p-2 border-b-2 border-slate-100 outline-none focus:border-indigo-500"
             placeholder="e.g. Kitchen"
+            onChange={handleChange}
+            value={filters.deptQuery}
           />
         </div>
         <div>
@@ -79,6 +84,8 @@ export default function StaffPayrollManager() {
             type="number" 
             name="minSalary"
             className="w-full p-2 border-b-2 border-slate-100 outline-none focus:border-indigo-500"
+            onChange={handleChange}
+            value={Number(filters.minSalary)}
           />
         </div>
       </div>
@@ -94,11 +101,28 @@ export default function StaffPayrollManager() {
         <tbody>
           {/* Task 7: Map through 'processedStaff' and render 'StaffRow' */}
           {/* Ensure you pass 'key', 'name', 'dept', and the calculated 'totalPay' */}
+          {
+            
+              processedStaff.map(staff => 
+              <StaffRow
+                key={staff.id}
+                name={staff.name}
+                dept = {staff.dept}
+                totalPay={staff.dailyRate * staff.daysWorked}
+                />
+          ) }
         </tbody>
       </table>
 
       {/* Task 8: Conditional Rendering */}
       {/* If processedStaff is empty, show a <div> with a message "No staff matches found" */}
+      {processedStaff.length === 0 && (
+        
+              <div className="text-center py-10">
+            <p className="text-slate-400 italic">No guests match "{filters.deptQuery}"</p>
+          </div>
+            
+          ) }
     </div>
   );
 }
