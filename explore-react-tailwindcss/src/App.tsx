@@ -11,6 +11,7 @@ import CottageBookingConfirmed from './components/CottageBookingConfirmed'
 import TheGuestFinder from './components/TheGuestFinder'
 import StaffPayrollManager from './components/Exercise/StaffPayrollManager'
 import SeaEagleInventory from './components/Exercise/SeaEagleInventory'
+import RoomStatusDashboard from './components/Exercise/RoomStatusDashboard'
 
 
 function App() {
@@ -27,8 +28,9 @@ function App() {
       <CottageBookingConfirmed />
       <TheGuestFinder />
       <StaffPayrollManager />
-      */}
       <SeaEagleInventory />
+      */}
+      <RoomStatusDashboard />
     </div>
   )
 }

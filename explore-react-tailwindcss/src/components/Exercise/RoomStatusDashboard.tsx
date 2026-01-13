@@ -44,13 +44,21 @@ export default function RoomStatusDashboard() {
   // Task 4: Universal Handle Change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Remember the logic: if type is checkbox, use 'checked'. Else use 'value'.
+    const {name, value, checked, type} = e.target;
+    setFilters((prev) => ({
+      ...prev, 
+      [name]: type === 'checkbox' ? checked : value
+  }));
   };
 
   // Task 5: Multi-Layer Filter
   const filteredRooms = rooms.filter(room => {
     // 1. Check if roomNumber or floor includes filters.search
     // 2. Check if filters.onlyDirty is true, if so, only show rooms where isClean === false
-    return true; // placeholder
+    const matchSearchResult = 
+              room.roomNumber.toLowerCase().includes(filters.search.toLowerCase()) || room.floor.toLowerCase().includes(filters.search.toLowerCase());
+    const isDirty = filters.onlyDirty ? !room.isClean : true;
+    return (matchSearchResult && isDirty);
   });
 
   return (
@@ -66,6 +74,8 @@ export default function RoomStatusDashboard() {
               placeholder="Search Room or Floor..."
               className="w-full p-3 border-b-2 border-slate-100 focus:border-blue-500 outline-none transition-all"
               // Task 6: Add props here
+              onChange={handleChange}
+              value={filters.search}
             />
           </div>
 
@@ -76,6 +86,7 @@ export default function RoomStatusDashboard() {
               id="dirtyFilter"
               className="w-5 h-5 accent-red-500"
               // Task 7: Add props here
+              onChange={handleChange}
             />
             <label htmlFor="dirtyFilter" className="text-sm font-bold text-slate-600 cursor-pointer">
               Show Dirty Only
@@ -85,6 +96,9 @@ export default function RoomStatusDashboard() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           {/* Task 8: Map the filteredRooms */}
+          {filteredRooms.map(room => (
+            <RoomCard roomNumber={room.roomNumber} floor={room.floor} isClean={filters.onlyDirty} />
+          ))}
           {/* Task 9: Show "All rooms are clean!" if list is empty */}
         </div>
       </div>
