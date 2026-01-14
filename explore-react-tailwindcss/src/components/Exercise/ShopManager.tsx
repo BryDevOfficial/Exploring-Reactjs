@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 // Task 1: Create the Interface 'ProductProps'
 // (Look at the object in the state below to see what keys you need)
 interface ProductProps {
-  id: number;
   name: string;
   category: string;
   price: number;
@@ -46,16 +45,29 @@ export default function ShopManager() {
   // Task 4: Initialize State for filters (search and promoOnly)
   const [filters, setFilters] = useState({
     // Add keys here
+    searchProduct: '',
+    onSaleProduct: false
   });
 
   // Task 5: Write the Universal Handle Change
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Remember the logic for checkboxes vs text!
+    const {type, name, checked, value} = e.target;
+    setFilters((prevsearch) => ({
+      ...prevsearch,
+      [name]: type === 'checkbox' ? checked: value
+    }))
   };
 
   // Task 6: Write the Filter Logic
   // Filter by name AND if promoOnly is true, show only items where onSale is true.
-  const filteredProducts = []; // Replace this with your .filter() logic
+  const filteredProducts = 
+                products.filter(product => {
+                  const matchProduct = product.name.toLowerCase().includes(filters.searchProduct.toLowerCase());
+                  const matchOnSale = filters.onSaleProduct ? (product.onSale) : true;
+                  return (matchProduct && matchOnSale);
+                });
+  
 
   return (
     <div className="p-8 max-w-4xl mx-auto bg-slate-50 min-h-screen">
@@ -66,20 +78,22 @@ export default function ShopManager() {
           <div className="flex-1 w-full">
             <input 
               type="text"
-              name="search"
+              name="searchProduct"
               placeholder="Search products..."
               className="w-full bg-transparent border-b-2 border-slate-200 focus:border-orange-500 outline-none p-2 transition-all"
               // Add props here
+              onChange={handleChange}
             />
           </div>
 
           <div className="flex items-center gap-3">
             <input 
               type="checkbox" 
-              name="promoOnly"
+              name="onSaleProduct"
               id="promo"
               className="w-6 h-6 accent-orange-500 cursor-pointer"
               // Add props here
+              onChange={handleChange}
             />
             <label htmlFor="promo" className="font-bold text-slate-700 cursor-pointer select-none">
               On Sale Only
@@ -89,13 +103,18 @@ export default function ShopManager() {
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {/* Task 7: Map the filteredProducts here */}
+         {filteredProducts.map((product) => (
+          <ProductCard key={product.id} name={product.name} category={product.category} price={product.price} onSale={product.onSale} />
+         ))}
         </div>
 
         {/* Task 8: Empty State UI */}
         {/* If filteredProducts is empty, show this div */}
+       { 
+        filteredProducts.length === 0 &&
         <div className="text-center py-20 bg-slate-50 rounded-3xl border-4 border-dashed border-slate-100 mt-6">
            <p className="text-slate-400 font-bold uppercase tracking-widest text-sm">No items found</p>
-        </div>
+        </div>}
       </div>
     </div>
   );
