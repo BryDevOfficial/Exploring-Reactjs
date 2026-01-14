@@ -63,11 +63,11 @@ export default function SkillLink() {
   // Task 6: The Logic (The Filter)
   const filteredProviders = providers.filter(worker => {
     // Hint A: Compare worker.skill to filters.yourKey (use toLowerCase)
-    const matchSkill = false; // Replace
+    const matchSkill = worker.skill.toLocaleLowerCase().includes(filters.searchSkill);
     
     // Hint B: Use the "Gatekeeper" pattern: 
     // "Is the filter ON? If yes, check worker status. If no, let everyone pass."
-    const matchVerified = false; // Replace
+    const matchVerified = filters.verifiedSkill ? worker.isVerified : true;
 
     return matchSkill && matchVerified;
   });
