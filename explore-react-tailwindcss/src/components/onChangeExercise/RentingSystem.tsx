@@ -53,8 +53,8 @@ export default function RentingSystem() {
   // Task 6: Filtering Logic
   // HINT: Gatekeeper Pattern - If onlyOutAtSea is true, isOut must be true.
   const filteredBoats = boats.filter(boat => {
-    const matchName = false; // Replace
-    const matchStatus = false; // Replace
+    const matchName = boat.name.toLocaleLowerCase().includes(filters.boatSearch)
+    const matchStatus = filters.onlyOutAtSea ? boat.isOut: true;
     return matchName && matchStatus;
   });
 
