@@ -2,11 +2,13 @@ import React, { useState } from 'react';
 
 // Task 1: Interface 'BoatProps'
 // (Keys: name, type, capacity, isOut)
-
+interface BoatProps {
+    name: string, type: string, capacity: number, isOut: boolean
+}
 
 // Task 2: Child Component 'BoatCard'
 // HINT on Brackets: Use { } for logic/variables, use ( ) for returning JSX.
-const BoatCard = (/* props */) => {
+const BoatCard = ({name, type, capacity, isOut}: BoatProps) => {
   return (
     <div className={`p-6 rounded-2xl border-2 transition-all ${isOut ? 'border-blue-400 bg-blue-50 shadow-lg shadow-blue-100' : 'border-slate-200 bg-white'}`}>
       <div className="flex justify-between items-start">
