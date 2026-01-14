@@ -43,6 +43,11 @@ export default function RentingSystem() {
     // 1. Destructure
     // 2. Logic: Check if 'type' is EXACTLY 'checkbox'
     // 3. Update State using [name]: ...
+    const {type, name, checked, value} = e.target;
+    setFilters((prev) => ({
+        ...prev,
+        [name]: type === 'checkbox' ? checked: value
+    }))
   };
 
   // Task 6: Filtering Logic
