@@ -11,7 +11,7 @@ interface DonationProps {
 // STYLING HINT: If amount >= 1000, use 'bg-yellow-50 border-yellow-200'.
 const DonationCard = ({donor, amount, fundType, isAnonymous}: DonationProps) => {
   return (
-    <div className={`p-4 rounded-xl border-2 transition-all ${ /* logic here */ "" }`}>
+    <div className={`p-4 rounded-xl border-2 transition-all ${amount >= 1000 ? 'bg-yellow-50 border-yellow-200' : 'bg-white border-slate-100'}`}>
       <div className="flex justify-between items-center">
         <div>
           <h3 className="font-bold text-slate-800">{isAnonymous ? "Anonymous" : donor}</h3>
@@ -61,6 +61,10 @@ export default function ChurchFinancialSystem() {
     const matchAmount = filters.showHighValue ? donation.amount >= 1000 : true;
     return matchName && matchAmount;
   });
+
+  // FIX: CALCULATE THE TOTAL HERE (Outside of return)
+  // .reduce() takes a function (acc, curr) and a starting value (0)
+  const totalAmount = filteredDonations.reduce((acc, curr) => acc + curr.amount, 0);
 
   return (
     <div className="p-8 max-w-2xl mx-auto bg-slate-50 min-h-screen">
@@ -114,6 +118,17 @@ export default function ChurchFinancialSystem() {
       }
       {/* Task 10: Total Calculation (Optional Bonus) */}
       {/* HINT: filteredDonations.reduce((acc, curr) => acc + curr.amount, 0) */}
+      {/* FIX: DISPLAY THE CALCULATED TOTAL HERE */}
+      <div className="mt-8 p-6 bg-emerald-900 rounded-2xl text-white flex justify-between items-center shadow-lg shadow-emerald-100">
+        <div>
+          <p className="text-emerald-300 text-xs font-bold uppercase tracking-widest">Total Collection</p>
+          <h2 className="text-3xl font-black">₱{totalAmount.toLocaleString()}</h2>
+        </div>
+        <div className="text-right text-emerald-100">
+            <p className="text-[10px] uppercase font-bold opacity-70">Records Found</p>
+            <p className="text-xl font-bold">{filteredDonations.length}</p>
+        </div>
+      </div>
     </div>
   );
 }
