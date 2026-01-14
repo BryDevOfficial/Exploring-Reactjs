@@ -13,6 +13,7 @@ import StaffPayrollManager from './components/Exercise/StaffPayrollManager'
 import SeaEagleInventory from './components/Exercise/SeaEagleInventory'
 import RoomStatusDashboard from './components/Exercise/RoomStatusDashboard'
 import ShopManager from './components/Exercise/ShopManager'
+import PayrollSystem from './components/onChangeExercise/PayRollSystem'
 
 
 function App() {
@@ -31,8 +32,9 @@ function App() {
       <StaffPayrollManager />
       <SeaEagleInventory />
       <RoomStatusDashboard />
-      */}
       <ShopManager />
+      */}
+      <PayrollSystem />
     </div>
   )
 }
