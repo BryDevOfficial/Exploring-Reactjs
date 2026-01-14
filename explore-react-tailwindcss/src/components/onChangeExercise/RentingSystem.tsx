@@ -70,6 +70,7 @@ export default function RentingSystem() {
           placeholder="Search by boat name..."
           className="flex-1 p-4 rounded-xl border-2 border-slate-200 outline-none focus:border-blue-500"
           // Props here
+          onChange={handleChange}
         />
 
         {/* Task 8: Checkbox Input */}
@@ -79,6 +80,7 @@ export default function RentingSystem() {
             id="outCheck"
             className="w-6 h-6 accent-blue-600"
             // Props here
+            onChange={handleChange}
           />
           <label htmlFor="outCheck" className="font-bold text-slate-700 cursor-pointer">Show Only Out at Sea</label>
         </div>
