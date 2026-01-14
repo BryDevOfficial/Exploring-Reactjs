@@ -2,11 +2,17 @@ import React, { useState } from 'react';
 
 // Task 1: Create the Interface 'ProductProps'
 // (Look at the object in the state below to see what keys you need)
-
+interface ProductProps {
+  id: number;
+  name: string;
+  category: string;
+  price: number;
+  onSale: boolean;
+}
 
 // Task 2: Create the Child Component 'ProductCard'
 // Note: Do NOT add variables yet, just use the props I pass.
-const ProductCard = (/* Add props here */) => {
+const ProductCard = ({name, category, price, onSale }: ProductProps) => {
   return (
     <div className={`p-4 rounded-2xl border-2 transition-all ${onSale ? 'border-orange-200 bg-orange-50' : 'border-slate-100 bg-white'}`}>
       <div className="flex justify-between items-start">
