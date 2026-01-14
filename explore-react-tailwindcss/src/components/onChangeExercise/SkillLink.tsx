@@ -53,6 +53,11 @@ export default function SkillLink() {
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Hint: Destructure 'type', 'name', 'checked', and 'value'
     // Logic: type === 'checkbox' ? checked : value
+    const {type, name, checked, value} = e.target;
+    setFilters((prev) => ({
+      ...prev,
+      [name]: type === 'checked' ? checked: value
+    }))
   };
 
   // Task 6: The Logic (The Filter)
