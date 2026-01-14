@@ -15,6 +15,7 @@ import RoomStatusDashboard from './components/Exercise/RoomStatusDashboard'
 import ShopManager from './components/Exercise/ShopManager'
 import PayrollSystem from './components/onChangeExercise/PayRollSystem'
 import SkillLink from './components/onChangeExercise/SkillLink'
+import RentingSystem from './components/onChangeExercise/RentingSystem'
 
 
 function App() {
@@ -35,8 +36,9 @@ function App() {
       <RoomStatusDashboard />
       <ShopManager />
       <PayrollSystem />
-      */}
       <SkillLink />
+      */}
+      <RentingSystem />
     </div>
   )
 }
