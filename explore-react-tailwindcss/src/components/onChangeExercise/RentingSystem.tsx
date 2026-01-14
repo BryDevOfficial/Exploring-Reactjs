@@ -89,9 +89,20 @@ export default function RentingSystem() {
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
         {/* Task 9: Mapping */}
         {/* HINT: .map( (item) => ( <JSX /> ) ) */}
+        {
+            filteredBoats.map((boat) => (
+                <BoatCard key={boat.id} name={boat.name} type={boat.type} capacity={boat.capacity} isOut={boat.isOut} />
+            ))
+        }
       </div>
 
       {/* Task 10: Empty State */}
+      {
+        filteredBoats.length === 0 &&
+        (
+        <span className='text-gray-400'>Sorry no match found {filters.boatSearch}</span>
+        )
+      }
     </div>
   );
 }
