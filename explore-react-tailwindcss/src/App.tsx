@@ -12,6 +12,7 @@ import TheGuestFinder from './components/TheGuestFinder'
 import StaffPayrollManager from './components/Exercise/StaffPayrollManager'
 import SeaEagleInventory from './components/Exercise/SeaEagleInventory'
 import RoomStatusDashboard from './components/Exercise/RoomStatusDashboard'
+import ShopManager from './components/Exercise/ShopManager'
 
 
 function App() {
@@ -31,6 +32,7 @@ function App() {
       <SeaEagleInventory />
       <RoomStatusDashboard />
       */}
+      <ShopManager />
     </div>
   )
 }
