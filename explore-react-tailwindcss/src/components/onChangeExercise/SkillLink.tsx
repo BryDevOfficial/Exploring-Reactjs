@@ -45,6 +45,8 @@ export default function SkillLink() {
   // match the 'name' attribute in your inputs later!
   const [filters, setFilters] = useState({
      // Add keys here
+     searchSkill: '',
+     verifiedSkill: false
   });
 
   // Task 5: The Universal Change Handler
@@ -78,6 +80,8 @@ export default function SkillLink() {
               placeholder="Search by skill..."
               className="outline-none px-2 border-r border-slate-100"
               // Add props here
+              name="searchSkill"
+              onChange={handleChange}
            />
 
            {/* Task 8: The Checkbox Input */}
@@ -87,6 +91,8 @@ export default function SkillLink() {
                 id="verifyCheck"
                 className="w-5 h-5 accent-indigo-600"
                 // Add props here
+              name="verifiedSkill"
+              onChange={handleChange}
              />
              <label htmlFor="verifyCheck" className="text-sm font-bold text-slate-600">Verified Only</label>
            </div>
