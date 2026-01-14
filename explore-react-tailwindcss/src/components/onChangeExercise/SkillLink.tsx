@@ -13,7 +13,7 @@ interface ProviderProps {
 // Task 2: Child Component 'ProviderCard'
 // Hint: Use the "Conditional Class" pattern for the gold border.
 // Gold border should only appear if 'isVerified' is true.
-const ProviderCard = (name, skill, location, isVerified): ProviderProps => {
+const ProviderCard = ({name, skill, location, isVerified}: ProviderProps) => {
   return (
     <div className={`p-5 rounded-3xl border-4 transition-all ${isVerified ? "border-b-emerald-600" : "border-b-gray-200" }`}>
        <div className="flex justify-between items-center">
