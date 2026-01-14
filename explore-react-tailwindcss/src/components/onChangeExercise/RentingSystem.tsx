@@ -15,6 +15,9 @@ const BoatCard = ({name, type, capacity, isOut}: BoatProps) => {
         <h3 className="text-xl font-black text-slate-800">{name}</h3>
         {/* Task 3: Status Badge */}
         {/* HINT: If isOut is true, show "🌊 AT SEA", else show "⚓ DOCKED" */}
+        {
+        isOut ? "🌊": "⚓"
+        }
       </div>
       <p className="text-slate-500 font-medium">{type} • {capacity} Pax</p>
     </div>
