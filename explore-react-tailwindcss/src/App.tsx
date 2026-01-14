@@ -16,6 +16,7 @@ import ShopManager from './components/Exercise/ShopManager'
 import PayrollSystem from './components/onChangeExercise/PayRollSystem'
 import SkillLink from './components/onChangeExercise/SkillLink'
 import RentingSystem from './components/onChangeExercise/RentingSystem'
+import ChurchFinancialSystem from './components/onChangeExercise/ChurchFinancialSystem'
 
 
 function App() {
@@ -37,8 +38,9 @@ function App() {
       <ShopManager />
       <PayrollSystem />
       <SkillLink />
-      */}
       <RentingSystem />
+      */}
+      <ChurchFinancialSystem />
     </div>
   )
 }
