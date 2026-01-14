@@ -59,7 +59,7 @@ export default function PayrollSystem() {
   const filteredEmployees = 
         employees.filter((employee) => {
             const nameMatch = employee.name.toLowerCase().includes(filters.searchEmployee.toLowerCase());
-            const BonusMatch = employee.hasBonus === filters.hasBonusEmployee;
+            const BonusMatch = employee.hasBonus ? filters.hasBonusEmployee : true;
             return (nameMatch && BonusMatch);
         })
 
