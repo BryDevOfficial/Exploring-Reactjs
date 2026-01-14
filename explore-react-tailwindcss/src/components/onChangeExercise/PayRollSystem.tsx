@@ -10,7 +10,7 @@ interface EmployeeProps {
 // Task 2: Create Child Component 'EmployeeRow'
 const EmployeeRow = ({name, dept, salary, hasBonus }: EmployeeProps) => {
     return (
-      <div className={`p-4 rounded-2xl border-2 transition-all ${hasBonus ? 'border-orange-200 bg-orange-50' : 'border-slate-100 bg-white'}`}>
+      <div className={`p-4 rounded-2xl border-2 transition-all ${hasBonus ? 'border-green-200 bg-green-50' : 'border-slate-100 bg-white'}`}>
         <div className="flex justify-between items-start">
           <div>
             <h3 className="font-bold text-slate-800">{name}</h3>
@@ -18,11 +18,11 @@ const EmployeeRow = ({name, dept, salary, hasBonus }: EmployeeProps) => {
           </div>
           {/* Task 3: Show "PROMO" badge ONLY if hasBonus is true */}
           {hasBonus && (
-            <span className="bg-orange-500 text-white text-[10px] px-2 py-1 rounded-md font-black">BONUS</span>
+            <span className="bg-green-500 text-white text-[10px] px-2 py-1 rounded-md font-black">BONUS</span>
           )}
         </div>
         <div className="mt-4">
-          <span className={`text-xl font-black ${hasBonus ? 'text-red-600' : 'text-slate-900'}`}>
+          <span className={`text-xl font-black ${hasBonus ? 'text-green-600' : 'text-slate-900'}`}>
             ₱{salary.toLocaleString()}
           </span>
         </div>
@@ -59,7 +59,7 @@ export default function PayrollSystem() {
   const filteredEmployees = 
         employees.filter((employee) => {
             const nameMatch = employee.name.toLowerCase().includes(filters.searchEmployee.toLowerCase());
-            const BonusMatch = employee.hasBonus ? filters.hasBonusEmployee : true;
+            const BonusMatch = filters.hasBonusEmployee ? employee.hasBonus : true;
             return (nameMatch && BonusMatch);
         })
 
