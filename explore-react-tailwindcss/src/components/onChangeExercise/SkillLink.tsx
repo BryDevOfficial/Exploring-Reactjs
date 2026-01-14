@@ -56,7 +56,7 @@ export default function SkillLink() {
     const {type, name, checked, value} = e.target;
     setFilters((prev) => ({
       ...prev,
-      [name]: type === 'checked' ? checked: value
+      [name]: type === 'checkbox' ? checked: value
     }))
   };
 
@@ -106,10 +106,18 @@ export default function SkillLink() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {/* Task 9: Map the filteredProviders */}
+        {
+        filteredProviders.map((skilled) => (<ProviderCard key={skilled.id} name={skilled.name} skill={skilled.skill} location={skilled.location} isVerified={skilled.isVerified} />))
+        }
       </div>
 
       {/* Task 10: The Empty State Guard */}
       {/* Hint: Check the length of filteredProviders */}
+      {
+      filteredProviders.length === 0 && (
+       <span className='text-gray-500'>No match found for {filters.searchSkill}</span>
+      )
+      }
     </div>
   );
 }
