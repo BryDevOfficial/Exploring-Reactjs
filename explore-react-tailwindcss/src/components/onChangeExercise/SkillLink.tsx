@@ -3,18 +3,25 @@ import React, { useState } from 'react';
 // Task 1: Interface 'ProviderProps'
 // Hint: Look at the data in the state. You need 5 keys. 
 // Do you need 'id' in the Interface if you only use it for the 'key' in map? 
-
+interface ProviderProps {
+  name: string,
+  skill: string,
+  location: string,
+  isVerified: boolean
+}
 
 // Task 2: Child Component 'ProviderCard'
 // Hint: Use the "Conditional Class" pattern for the gold border.
 // Gold border should only appear if 'isVerified' is true.
-const ProviderCard = (/* Props here */) => {
+const ProviderCard = (name, skill, location, isVerified): ProviderProps => {
   return (
-    <div className={`p-5 rounded-3xl border-4 transition-all ${ /* Hint: Use ternary for border color */ "" }`}>
+    <div className={`p-5 rounded-3xl border-4 transition-all ${isVerified ? "border-b-emerald-600" : "border-b-gray-200" }`}>
        <div className="flex justify-between items-center">
           <h3 className="text-xl font-black text-slate-800">{name}</h3>
           {/* Task 3: Badge UI */}
           {/* Hint: Use logical && to show a "Verified" span ONLY if isVerified is true */}
+          {isVerified &&
+          (<span className="bg-green-500 text-white text-[10px] px-2 py-1 rounded-md font-black">VERIFIED</span>)}
        </div>
        <p className="text-indigo-600 font-bold uppercase text-xs tracking-widest">{skill}</p>
        <div className="mt-4 flex justify-between items-center text-sm text-slate-500">
