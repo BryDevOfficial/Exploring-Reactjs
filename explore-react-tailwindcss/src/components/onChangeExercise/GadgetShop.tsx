@@ -59,7 +59,7 @@ export default function GadgetShop() {
 
   // Task 6: Filter Logic
   const filteredProducts = products.filter(p => {
-    const matchName = filters.query.toLocaleUpperCase().includes(p.name.toLocaleLowerCase())
+    const matchName = filters.query.toLocaleLowerCase().includes(p.name.toLocaleLowerCase())
     // HINT: If onlyAvailable is true, stock must be > 0.
     const matchStock = filters.onlyAvailable ? p.stock > 0 : true;
     return matchName && matchStock;
