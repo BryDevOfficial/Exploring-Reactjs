@@ -16,6 +16,14 @@ const ProductCard = ({ name, price, stock }: ProductProps) => {
       
       {/* Task 3: Stock Warning */}
       {/* HINT: If stock is 0, show "OUT OF STOCK" in red, else show "Qty: [number]" */}
+      <div className="mt-2">
+        {
+        stock === 0 ? (
+        <span className="text-red-500 font-bold">OUT OF STOCK</span>
+      ) : (<span className="text-green-700 font-bold">Qty: {stock}</span>)
+        }
+        
+        </div>
     </div>
   );
 };
