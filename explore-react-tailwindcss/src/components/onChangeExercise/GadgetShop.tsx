@@ -48,20 +48,27 @@ export default function GadgetShop() {
   // Task 5: Handle Change (Muscle Memory Check!)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Write your universal handler here
+    const {name, type, value, checked} = e.target;
+    setFilters((prev) => (
+     { ...prev,
+      [name]: type === 'checkbox' ? checked: value
+      }
+    ))
 
   };
 
   // Task 6: Filter Logic
   const filteredProducts = products.filter(p => {
-    const matchName = false; // Replace
+    const matchName = filters.query.toLocaleUpperCase().includes(p.name.toLocaleLowerCase())
     // HINT: If onlyAvailable is true, stock must be > 0.
-    const matchStock = false; // Replace
+    const matchStock = filters.onlyAvailable ? p.stock > 0 : true;
     return matchName && matchStock;
   });
 
   // Task 7: Total Calculation
   // HINT: Use .reduce() on the filteredProducts
-  const totalValue = 0; // Replace
+  const totalValue = filteredProducts.reduce((acc, curr) => acc + (curr.price * curr.stock), 0)
+   
 
   return (
     <div className="p-8 max-w-2xl mx-auto bg-slate-50 min-h-screen">
