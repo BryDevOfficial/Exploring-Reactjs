@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 
 // Task 1: Interface 'ProductProps'
 // Keys: name, category, price, stock
-
+interface ProductProps {
+  name: string, price: number, stock: number;
+}
 
 // Task 2: Child Component 'ProductCard'
 // HINT: If stock === 0, add 'opacity-50' to the main div.
@@ -46,6 +48,7 @@ export default function GadgetShop() {
   // Task 5: Handle Change (Muscle Memory Check!)
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // Write your universal handler here
+
   };
 
   // Task 6: Filter Logic
