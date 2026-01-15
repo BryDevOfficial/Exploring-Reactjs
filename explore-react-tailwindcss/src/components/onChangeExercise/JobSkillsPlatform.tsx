@@ -2,6 +2,22 @@ import React, { useState } from 'react';
 
 // Task 1: Interface 'Worker' 
 // (id, name, skill, isVerified)
+interface Worker {
+  name: string;
+  skill: string;
+  isVerified: boolean;
+}
+
+function JobSkillsPlatformCard( {name, skill, isVerified}: Worker ) {
+  return (<div className="border p-4 rounded shadow-sm bg-white">
+    <h2 className="text-xl font-bold mb-2">{name}</h2>
+    <p className="mb-2">Skill: {skill}</p>
+    <p className={isVerified ? "text-green-600 font-bold" : "text-red-600 font-bold"}>
+      {isVerified ? "Verified" : "Not Verified"}
+    </p>
+  </div>
+  );
+}
 
 export default function JobSkillsPlatform() {
   const [workers] = useState([
@@ -34,9 +50,8 @@ export default function JobSkillsPlatform() {
   // Task 4: The Triple Filter Logic
   const filteredWorkers = workers.filter(w => {
     const matchName = w.name.toLowerCase().includes(filters.search.toLowerCase());
-    
     // HINT: If filters.category is "All", return true. Else compare.
-    const matchCategory = false; // Replace this
+    const matchCategory = filters.category === "All" ? true : w.skill === filters.category;
     
     const matchVerified = filters.verifiedOnly ? w.isVerified : true;
 
@@ -49,7 +64,7 @@ export default function JobSkillsPlatform() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 bg-white p-6 rounded-2xl shadow-sm">
         {/* Task 5: Text Search */}
-        <input name="search" placeholder="Name..." onChange={handleChange} className="border p-2 rounded" />
+        <input type='text' name="search" placeholder="Name..." onChange={handleChange} className="border p-2 rounded" />
 
         {/* Task 6: THE DROPDOWN */}
         {/* HINT: name must be "category" */}
@@ -67,7 +82,20 @@ export default function JobSkillsPlatform() {
       </div>
 
       {/* Task 8: Display Results Count */}
+      <p className="mb-6 font-semibold text-slate-700">
+        {filteredWorkers.length} worker{filteredWorkers.length !== 1 ? 's' : ''} found.
+      </p>
       {/* Task 9: Map Workers into Cards */}
+      <div className="grid gap-6 md:grid-cols-2">
+        {filteredWorkers.map(w => (
+          <JobSkillsPlatformCard 
+            key={w.name} 
+            name={w.name} 
+            skill={w.skill} 
+            isVerified={w.isVerified} 
+          />
+        ))}
+      </div>
     </div>
   );
 }

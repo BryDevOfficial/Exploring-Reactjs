@@ -18,6 +18,7 @@ import SkillLink from './components/onChangeExercise/SkillLink'
 import RentingSystem from './components/onChangeExercise/RentingSystem'
 import ChurchFinancialSystem from './components/onChangeExercise/ChurchFinancialSystem'
 import GadgetShop from './components/onChangeExercise/GadgetShop'
+import JobSkillsPlatform from './components/onChangeExercise/JobSkillsPlatform'
 
 
 function App() {
@@ -41,10 +42,10 @@ function App() {
       <SkillLink />
       <RentingSystem />
       <ChurchFinancialSystem />
+      <GadgetShop />
       */}
 
-      <GadgetShop />
-
+        <JobSkillsPlatform />
 
     </div>
   )
