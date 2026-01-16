@@ -35,7 +35,14 @@ export default function SkillFinder() {
   })
   
   // TODO: Task 3 - Universal Handle Change (With Number conversion for minExperience)
-
+  const handleChange = ((e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const {type, value, name} = e.target;
+    const checked = (e.target as HTMLInputElement).checked
+    setFilters((prev) => ({
+        ...prev,
+        [name]: type === 'checkbox' ? checked : value
+    }))
+  })
   // TODO: Task 4 - Filter Logic (The 4 Gatekeepers)
 
   // TODO: Task 5 - Average Calculation (Reduce)
