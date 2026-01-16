@@ -55,6 +55,7 @@ export default function PayrollSystemDev() {
     const filterName = employee.name.toLocaleLowerCase().includes(filter.search.toLocaleLowerCase())
     const filterDepartment = filter.byDepartment === 'All' ? true : (employee.department === filter.byDepartment)
     const filterContractor = filter.contractorOnly ? employee.isContractor : true;
+    return (filterName && filterDepartment && filterContractor)
   })
 
   // TODO: Task 5 - Total Calculation (Reduce)
