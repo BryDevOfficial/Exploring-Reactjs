@@ -53,7 +53,7 @@ export default function PayrollSystemDev() {
   // TODO: Task 4 - Filter Logic (The Gatekeepers)
   const filteredEmployees = employees.filter((employee) => {
     const filterName = employee.name.toLocaleLowerCase().includes(filter.search.toLocaleLowerCase())
-    const filterDepartment = filter.byDepartment === 'All' ? true : (employee.department === filter.byDepartment)
+    const filterDepartment = filter.byDepartment === 'All' ? true : (filter.byDepartment === employee.department)
     const filterContractor = filter.contractorOnly ? employee.isContractor : true;
     return (filterName && filterDepartment && filterContractor)
   })
@@ -67,16 +67,19 @@ export default function PayrollSystemDev() {
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10 bg-white p-6 rounded-2xl shadow-sm border border-slate-200">
         {/* TODO: UI - Search Input */}
-        <input type='text'  className='' name='search' onChange={handleSearchEmployee} />
+        <input type='text'  className='border p-3 rounded-xl outline-blue-500' name='search' placeholder='Search Employee' onChange={handleSearchEmployee} />
         {/* TODO: UI - Department Select */}
-        <input type='select' className='' name='byDepartment' onChange={handleSearchEmployee} />
-        {/* TODO: UI - Contractor Checkbox */}
-        <select className='' name='contractorOnly' onChange={handleSearchEmployee}>
+        <select className='border p-3 rounded-xl bg-white' name='byDepartment' onChange={handleSearchEmployee}>
             <option value='All'>All</option>
             <option value='IT'>IT</option>
-            <option value='HR'>IT</option>
+            <option value='HR'>HR</option>
             <option value='Sales'>Sales</option>
           </select>
+        {/* TODO: UI - Contractor Checkbox */}
+        <label className="flex items-center gap-2 font-bold text-slate-700 cursor-pointer">
+          <input name="contractorOnly" type="checkbox" onChange={handleSearchEmployee} className="w-5 h-5" /> 
+          Contractor Only
+        </label>
       </div>
 
       {/* TODO: UI - Display Count & Total Payroll */}
