@@ -85,7 +85,8 @@ export default function PayrollSystemDev() {
       {/* TODO: UI - Display Count & Total Payroll */}
        <div className="text-center py-10">
             <p className="text-slate-400 italic">Found {filteredEmployees.length} Employees</p>
-            <p className='text-green-600 font-bold'>Total Salary: {totalPayroll}</p>
+            <p className='text-green-600 font-bold'>
+              Total Salary: { totalPayroll.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",") }</p>
           </div>
 
       <div className="grid gap-4">
