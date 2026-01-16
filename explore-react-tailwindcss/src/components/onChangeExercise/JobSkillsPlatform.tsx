@@ -39,7 +39,7 @@ export default function JobSkillsPlatform() {
   // HINT: Your existing logic works! <select> uses 'value' just like <input type="text">.
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value, type } = e.target;
-    const checked = (e.target as HTMLInputElement).checked;
+   const checked = (e.target as HTMLInputElement).checked;
 
     setFilters(prev => ({
       ...prev,

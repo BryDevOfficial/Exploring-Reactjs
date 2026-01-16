@@ -19,6 +19,7 @@ import RentingSystem from './components/onChangeExercise/RentingSystem'
 import ChurchFinancialSystem from './components/onChangeExercise/ChurchFinancialSystem'
 import GadgetShop from './components/onChangeExercise/GadgetShop'
 import JobSkillsPlatform from './components/onChangeExercise/JobSkillsPlatform'
+import RentalSystem from './components/onChangeExercise/RentalSystem'
 
 
 function App() {
@@ -43,9 +44,11 @@ function App() {
       <RentingSystem />
       <ChurchFinancialSystem />
       <GadgetShop />
+      <JobSkillsPlatform />
       */}
 
-        <JobSkillsPlatform />
+      <RentalSystem />
+
 
     </div>
   )
