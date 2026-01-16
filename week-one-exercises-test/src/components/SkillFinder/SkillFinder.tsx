@@ -1,6 +1,22 @@
 import React, { useState } from 'react';
 
 // TODO: Task 1 - Interface
+ interface Worker {
+    name: string, skill: string, yearsOfExperience: number, isAvailableNow: boolean
+}
+
+function SkillFinderCard({name, skill, yearsOfExperience, isAvailableNow}: Worker) {
+    return (
+        <div className="bg-white p-4 rounded-lg shadow-sm border border-slate-200">
+            <h2 className="text-xl font-bold text-slate-900">{name}</h2>
+            <p className="text-slate-700">{skill}</p>
+            <p className="text-slate-600">Years of Experience: {yearsOfExperience}</p>
+            <p className={`font-medium ${isAvailableNow ? 'text-green-600' : 'text-red-600'}`}>
+                {isAvailableNow ? 'Available Now' : 'Not Available'}
+            </p>
+        </div>
+    );
+}
 
 export default function SkillFinder() {
   const [workers] = useState([
@@ -11,6 +27,12 @@ export default function SkillFinder() {
   ]);
 
   // TODO: Task 2 - State Setup
+  const [filters, setFilters] = useState({
+    search: '',
+    skillCategory: 'All',
+    minExperience: 0,
+    onlyAvailable: false
+  })
   
   // TODO: Task 3 - Universal Handle Change (With Number conversion for minExperience)
 
