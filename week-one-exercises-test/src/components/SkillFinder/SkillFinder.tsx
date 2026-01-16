@@ -44,6 +44,13 @@ export default function SkillFinder() {
     }))
   })
   // TODO: Task 4 - Filter Logic (The 4 Gatekeepers)
+  workers.filter((person) => {
+    const searchName = person.name.toLocaleLowerCase().includes(filters.search.toLocaleLowerCase())
+    const searchSkills = filters.skillCategory === 'All' ? true : (person.skill === filters.skillCategory)
+    const searchWorkersOnly = person.yearsOfExperience >= filters.minExperience
+    const searchAvailableWorkers = filters.onlyAvailable ? person.isAvailableNow : true
+    return(searchName && searchSkills && searchWorkersOnly && searchAvailableWorkers)
+  })
 
   // TODO: Task 5 - Average Calculation (Reduce)
 
