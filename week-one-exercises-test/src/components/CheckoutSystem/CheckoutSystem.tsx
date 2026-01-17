@@ -7,11 +7,17 @@ interface Product{
 
 function CheckoutSystemCard({productName, category, unitPrice, quantity}: Product) {
   return (
-    <div className="p-4 border-b border-slate-200">
-      <h2 className="font-bold">{productName}</h2>
-      <p className="text-slate-600">{category}</p>
-      <p className="text-slate-700">₱{unitPrice.toLocaleString()} x {quantity}</p>
-    </div>
+    <tr className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+      <td className="p-4">
+        <div className="font-bold text-slate-800">{productName}</div>
+        <div className="text-xs text-slate-500 uppercase tracking-wider">{category}</div>
+      </td>
+      <td className="p-4 text-slate-600">₱{unitPrice.toLocaleString()}</td>
+      <td className="p-4 text-slate-600">x {quantity}</td>
+      <td className="p-4 text-right font-bold text-slate-900">
+        ₱{(unitPrice * quantity).toLocaleString()}
+      </td>
+    </tr>
   );
 }
 
@@ -21,6 +27,7 @@ export default function CheckoutSystem() {
     { id: 2, productName: "Safety Helmet", category: "Safety", unitPrice: 800, quantity: 15 },
     { id: 3, productName: "Electric Saw", category: "Tools", unitPrice: 12000, quantity: 1 },
     { id: 4, productName: "Soldering Iron", category: "Electronics", unitPrice: 1500, quantity: 10 },
+    { id: 5, productName: "Samsung Type-C Chager", category: "Electronics", unitPrice: 200, quantity: 2 },
   ]);
 
   // TODO: Task 2 - State Setup (search, category, highValueOnly)
@@ -43,14 +50,12 @@ export default function CheckoutSystem() {
   // TODO: Task 4 - Filter Logic
   // HINT: For highValueOnly, calculate (unitPrice * quantity) inside the filter
   const filteringProduct = 
-  inventory.filter((item) => {
-    const searchProduct = 
-    item.productName.toLocaleLowerCase()
-    .includes(filters.search.toLocaleLowerCase()) 
-    && item.category.toLocaleLowerCase() === filters.category 
-    && filters.highValueOnly ? (item.unitPrice * item.quantity) >= 10000 : true;
+  inventory.filter((item) => { 
+    const searchProduct = item.productName.toLocaleLowerCase().includes(filters.search.toLocaleLowerCase()) 
+    const searchCategory = filters.category === 'All' ? true : (item.category.toLocaleLowerCase() === filters.category.toLocaleLowerCase())
+    const searchHighValueOnly =  filters.highValueOnly ? (item.unitPrice * item.quantity) >= 10000 : true;
     
-    return searchProduct;
+    return searchProduct && searchCategory && searchHighValueOnly;
   }
 )
 
@@ -107,6 +112,19 @@ export default function CheckoutSystem() {
 
         <div className="p-6 bg-slate-50 border-t-2 border-slate-200">
            {/* TODO: UI - Display Sub-total, Tax (12%), and Grand Total with Commas */}
+<div className="p-6 bg-slate-50 border-t-2 border-slate-200 text-right space-y-2">
+  <p className="text-slate-600 text-sm">
+    Sub-total: <span className="font-bold text-slate-900">₱{subTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+  </p>
+  <p className="text-slate-600 text-sm">
+    Tax (12%): <span className="font-bold text-slate-900">₱{tax.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+  </p>
+  <div className="pt-2 border-t border-slate-200">
+    <h2 className="text-2xl font-black text-indigo-700">
+      Grand Total: ₱{grandTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}
+    </h2>
+  </div>
+</div>
         </div>
       </div>
     </div>
