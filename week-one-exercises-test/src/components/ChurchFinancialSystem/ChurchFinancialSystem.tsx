@@ -3,7 +3,6 @@ import React, { useState } from 'react';
 // TODO: Task 1 - Interface & ContributionRow Component (Must return <tr>)
 
 interface Contribution {
-  id: number;
   donorName: string;
   type: string;
   amount: number;
@@ -54,6 +53,8 @@ export default function ChurchFinancialSystem() {
       const searchName = donator.donorName.toLocaleLowerCase().includes(filter.searchName)
       const searchType = filter.contributionType === 'All' ? true : donator.type === filter.contributionType
       const isAnonymous = filter.showAnonymousOnly ? donator.isAnonymous : true
+      
+      return (searchName && searchType && isAnonymous)
   })
 
   // TODO: Task 5 - Calculations (Gross, 10% Deduction, Net)
@@ -94,11 +95,27 @@ export default function ChurchFinancialSystem() {
           </thead>
           <tbody>
             {/* TODO: Task 6 - Map filtered items into ContributionRow */}
+            {contributors.map((cont) => (
+              <ContributionRowCard key={cont.id} donorName={cont.donorName} type={cont.type} amount={cont.amount} isAnonymous={cont.isAnonymous}  />
+            ))}
           </tbody>
         </table>
 
         <div className="p-8 bg-emerald-50 border-t-2 border-emerald-100">
            {/* TODO: UI - Display Gross, 10% Deduction, and Net Collection with ₱ and Commas */}
+           <div className="p-6 bg-slate-50 border-t-2 border-slate-200 text-right space-y-2">
+  <p className="text-slate-600 text-sm">
+    Gross: <span className="font-bold text-slate-900">₱{grossTotal.toLocaleString()}</span>
+  </p>
+  <p className="text-slate-600 text-sm">
+    10% Deduction: <span className="font-bold text-slate-900">₱{missionaryFund.toLocaleString()}</span>
+  </p>
+  <div className="pt-2 border-t border-slate-200">
+    <h2 className="text-2xl font-black text-indigo-700">
+      Net Collection: ₱{netCollection.toLocaleString()}
+    </h2>
+  </div>
+</div>
         </div>
       </div>
     </div>
