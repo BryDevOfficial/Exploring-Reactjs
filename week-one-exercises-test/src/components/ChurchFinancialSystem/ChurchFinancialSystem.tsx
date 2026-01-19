@@ -50,8 +50,16 @@ export default function ChurchFinancialSystem() {
   }
 
   // TODO: Task 4 - Filter Logic (The 3 Gatekeepers)
+  const contributors = contributions.filter((donator) => {
+      const searchName = donator.donorName.toLocaleLowerCase().includes(filter.searchName)
+      const searchType = filter.contributionType === 'All' ? true : donator.type === filter.contributionType
+      const isAnonymous = filter.showAnonymousOnly ? donator.isAnonymous : true
+  })
 
   // TODO: Task 5 - Calculations (Gross, 10% Deduction, Net)
+  const grossTotal = contributors.reduce((acc, curr) => acc + curr.amount ,0)
+  const missionaryFund = grossTotal * 0.1;
+  const netCollection = grossTotal - missionaryFund;
 
   return (
     <div className="p-10 max-w-6xl mx-auto bg-slate-50 min-h-screen">
@@ -60,8 +68,19 @@ export default function ChurchFinancialSystem() {
       {/* --- Filter Section --- */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-10 bg-white p-6 rounded-xl shadow-sm border border-slate-200">
         {/* TODO: UI - Search Input */}
+        <input type='text' className='border border-slate-300 rounded-lg p-2 w-full' name='searchName' onChange={handleChange} placeholder='Search Products...' />
         {/* TODO: UI - Type Select (Tithe, Offering, Building Fund) */}
+          <select className='border border-slate-300 rounded-lg p-2 w-full' name='contributionType' onChange={handleChange}>
+          <option value="All">All Type</option>
+          <option value="Tithe">Tithe</option>
+          <option value="Offering">Offering</option>
+          <option value="Building Fund">Building Fund</option>
+        </select>
         {/* TODO: UI - Anonymous Checkbox */}
+         <label className='flex items-center space-x-2'>
+          <input type='checkbox' name='showAnonymousOnly' onChange={handleChange} />
+          <span className='text-slate-700'>Anonymous Checkbox</span>
+        </label>
       </div>
 
       <div className="bg-white rounded-xl shadow-md overflow-hidden">
