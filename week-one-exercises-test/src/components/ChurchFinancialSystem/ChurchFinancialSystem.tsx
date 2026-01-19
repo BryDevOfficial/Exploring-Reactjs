@@ -39,6 +39,15 @@ export default function ChurchFinancialSystem() {
   })
   
   // TODO: Task 3 - Universal Handler (handleChange)
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+    const {type, name, value} = e.target
+    const checked = (e.target as HTMLInputElement).checked
+    setFilter((prev) => ({
+      ...prev,
+      [name]: type === 'checkbox' ? checked : value
+    })
+    )
+  }
 
   // TODO: Task 4 - Filter Logic (The 3 Gatekeepers)
 
