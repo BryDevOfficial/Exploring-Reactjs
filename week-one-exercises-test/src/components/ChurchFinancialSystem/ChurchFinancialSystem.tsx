@@ -32,6 +32,11 @@ export default function ChurchFinancialSystem() {
   ]);
 
   // TODO: Task 2 - State Setup (searchName, contributionType, showAnonymousOnly)
+  const [filter, setFilter] = useState({
+    searchName: '', 
+    contributionType: 'All', 
+    showAnonymousOnly: false
+  })
   
   // TODO: Task 3 - Universal Handler (handleChange)
 
