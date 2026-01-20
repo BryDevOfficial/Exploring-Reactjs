@@ -1,6 +1,26 @@
 import React, { useState } from 'react';
 
 // TODO: Task 1 - Interface & BookingRow (tr)
+interface SeaEagleBookingProps {
+  name: string,
+  boat: string,
+  bookingDate: string,
+  price: number,
+  days: number
+  status: string
+}
+
+function BookingRow({name, boat, bookingDate, price, days, status}: SeaEagleBookingProps) {
+       <tr className="border-b border-slate-100 hover:bg-slate-50 transition-colors">
+      <td className="p-4">
+        <div className="font-bold text-slate-800">
+          Total Cost: ₱{(price*days).toLocaleString()}
+          </div>
+        <div className="text-xs text-slate-500 uppercase tracking-wider">{boat}</div>
+      </td>
+      <td className="p-4 text-right font-bold text-slate-900">₱{status}</td>
+    </tr>
+}
 
 export default function SeaEagleBooking() {
   const [bookings] = useState([
@@ -11,6 +31,11 @@ export default function SeaEagleBooking() {
   ]);
 
   // TODO: Task 2 - State
+  const [filter, setFilter] = useState({
+    search: '',
+    boatType: 'All',
+    Status: 'All'
+  })
 
   // TODO: Task 3 - HandleChange & Filter Logic
 
