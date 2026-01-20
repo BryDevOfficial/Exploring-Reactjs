@@ -28,6 +28,14 @@ This directory `explore-react-tailwindcss` is a testing ground to react fundamen
 git clone -b explore-react-tailwindcss
 npm install
 ```
+
+```js
+//clone and run it to your local server
+https://vite.dev/
+create vite@latest
+https://tailwindcss.com/docs/installation/using-vite
+```
+
 I use heroicons for react component but it will automatically added once you run the command npm i / npm install
 
 ### Week one completed:
