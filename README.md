@@ -2,6 +2,8 @@
 
 This directory `explore-react-tailwindcss` is a testing ground to react fundamental, from understanding useState, Toggle, OnChange, and OnClick. I tried to make it 3 hours and minimum of 2 hours for daily coding routine, then do review of things by Sunday.
 
+[My React/Nextjs with LIRT Path](https://docs.google.com/document/d/1xWxOXkO9Rkpy-aLtGIenaSoCEjyfcoCmIqKfRA6Mxjo/edit?tab=t.0)
+
 ## Hour 1: Learn (Study + Code-Along)
 - 40 min: Tutorial/Documentation
 - 20 min: Code along with examples
