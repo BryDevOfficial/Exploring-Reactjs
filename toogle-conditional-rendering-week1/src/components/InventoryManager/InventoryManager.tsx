@@ -4,20 +4,25 @@ export default function InventoryManager() {
   // --- TEST AREA ---
   
   // 1. TODO: Create 'inventory' state using these 4 objects:
-  /*
+const [inventory, setInventory] = useState([
     { id: 101, name: "Industrial Motor", stock: 5, category: "Parts", price: 4500 },
     { id: 102, name: "Hydraulic Fluid", stock: 25, category: "Liquids", price: 800 },
     { id: 103, name: "Steel Bolts", stock: 8, category: "Hardware", price: 15 },
     { id: 104, name: "Rubber Gaskets", stock: 50, category: "Hardware", price: 120 }
-  */
+    ])
 
   // 2. TODO: Create 'showLowStockOnly' state (Boolean - default false)
+  const [showLowStockOnly, setShowLowStockOnly] = useState(false)
   // 3. TODO: Create 'searchQuery' state (Object for universal handler)
+  const [searchQuery, setSearchQuery] = useState({
+    search: ''
+  })
 
   // --- LOGIC AREA ---
   // TODO: Create a filtered list that handles BOTH:
   //    a) The text search (by name)
   //    b) The toggle (If showLowStockOnly is true, only show items with stock < 10)
+  
 
   // TODO: Create handleDelete function
   // TODO: Calculate "Total Inventory Value" (stock * price for all filtered items)
