@@ -8,30 +8,42 @@ const [inventory, setInventory] = useState([
     { id: 101, name: "Industrial Motor", stock: 5, category: "Parts", price: 4500 },
     { id: 102, name: "Hydraulic Fluid", stock: 25, category: "Liquids", price: 800 },
     { id: 103, name: "Steel Bolts", stock: 8, category: "Hardware", price: 15 },
-    { id: 104, name: "Rubber Gaskets", stock: 50, category: "Hardware", price: 120 }
+    { id: 104, name: "Rubber Gaskets", stock: 50, category: "Hardware", price: 120 },
+    { id: 105, name: "Zoren Garcia", stock: 8, category: "Hardware", price: 160 }
     ])
 
   // 2. TODO: Create 'showLowStockOnly' state (Boolean - default false)
-  const [showLowStockOnly, setShowLowStockOnly] = useState(false)
+  //const [showLowStockOnly, setShowLowStockOnly] = useState(false)
   // 3. TODO: Create 'searchQuery' state (Object for universal handler)
   const [searchQuery, setSearchQuery] = useState({
-    search: ''
+    search: '',
+    showLowStockOnly: false
   })
 
   // --- LOGIC AREA ---
   // TODO: Create a filtered list that handles BOTH:
   //    a) The text search (by name)
   //    b) The toggle (If showLowStockOnly is true, only show items with stock < 10)
-  
+  const filteredInventory = inventory.filter((item) => {
+    const searchName = item.name.toLocaleLowerCase().includes(searchQuery.search.toLocaleLowerCase())
+    const searchStocks = searchQuery.showLowStockOnly ? (item.stock < 10) : true
+    return searchName && searchStocks
+  })
 
   // TODO: Create handleDelete function
+  const handleDelete = (id: number) => {
+    const updatedInventory = inventory.filter((item) => (item.id !== id))
+    return updatedInventory
+  }
   // TODO: Calculate "Total Inventory Value" (stock * price for all filtered items)
+  const totalInventory = filteredInventory.reduce((acc, curr) => acc + (curr.stock * curr.price), 0)
 
   return (
     <div className="p-8 max-w-5xl mx-auto bg-gray-50 min-h-screen font-sans text-slate-900">
       <div className="flex justify-between items-end mb-8">
         <div>
           <h1 className="text-4xl font-black tracking-tight">Warehouse v2.1</h1>
+          {/*filteredInventory.length*/}
           <p className="text-slate-500 font-medium">Inventory & Stock Control</p>
         </div>
 
