@@ -13,9 +13,9 @@ function App() {
     <AdminControls bookingCount={0} />
       <SeaEagleAdmin />
       <ChurchDonationTracker />
+      <InventoryManager />
     */}
 
-      <InventoryManager />
 
     </>
   )
