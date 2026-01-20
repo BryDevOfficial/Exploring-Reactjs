@@ -30,7 +30,7 @@ npm install
 ```
 
 ```js
-//clone and run it to your local server
+//setup react with vite & tailwindcss
 https://vite.dev/
 create vite@latest
 https://tailwindcss.com/docs/installation/using-vite
