@@ -28,6 +28,10 @@ npm install
 ```
 I use heroicons for react component but it will automatically added once you run the command npm i / npm install
 
+```
+Due to work and time constraints during my React journey, it took me two weeks to complete this. I can now say I’m confident enough to move on to Week 2. There is still so much to explore in React, but honestly, I’ve already built full working databases back in college. My goal now is to deeply understand the fundamentals of React so I can master my LIRT Stack (Laravel, Inertia, React, Tailwind) with PostgreSQL and TypeScript.
+```
+
 
 ### Follow Me:
 
