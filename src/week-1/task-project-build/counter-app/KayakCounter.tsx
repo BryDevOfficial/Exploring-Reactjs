@@ -15,7 +15,8 @@ export default function KayakCounter() {
   }
     const handleDecrement = (value: number) => {
         const decrecrement = kayaksOut - value
-        kayaksOut === 0 ? setKayaksOut(0) : setKayaksOut(decrecrement)
+        //kayaksOut === 0 ? setKayaksOut(0) : setKayaksOut(decrecrement)
+        setKayaksOut(decrecrement < 0 ? 0 : decrecrement)
   }
   const handleReset = () => {
     kayaksOut > 0 ? setKayaksOut(0) : null
