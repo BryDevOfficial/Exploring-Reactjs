@@ -9,12 +9,12 @@ export default function ProductSelector() {
   // 3. Create handleIncrement (don't go past maxStock)
   const handleIncrement = (value: number) => {
       const res = quantity + value
-      setQuantity(quantity > maxStock ? maxStock : res)
+      setQuantity(res > maxStock ? maxStock : res)
   }
   // 4. Create handleDecrement (don't go below 1)
   const handleDecrement = (value: number) => {
       const res = quantity - value
-      setQuantity(quantity <= 1 ? 1 : res)
+      setQuantity(res < 1 ? 1 : res)
   }
   // 5. Create handleReset
   const handleReset = () => setQuantity(1)
