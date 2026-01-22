@@ -10,14 +10,17 @@ export default function FetchTodosAPI(){
     const [todoData, setTodoData] = useState<Todo[]>([])
     const [isLoading, setIsLoading] = useState(true)
     const [errorData, setErrorData] = useState<string | null>(null)
-    const dataAPI = 'https://jsonplaceholder.typicode.com/todos/'
+    const dataAPI = `https://jsonplaceholder.typicode.com/todos?_limit=${limitData}`
+    const [limitData, setLimitData] = useState(5)
 
   useEffect(() => {
+    const controller = new AbortController()
+    const signal = controller.signal
 
     const fetchData = async () => {
 
         try {
-            const response = await fetch(dataAPI)
+            const response = await fetch(dataAPI, { signal })
 
             if (!response.ok) {
 
@@ -39,8 +42,9 @@ export default function FetchTodosAPI(){
     };
 
     fetchData();
+    return () => controller.abort()
 
-  }, []);
+  }, [dataAPI]);
 
   if(isLoading) return <p>Loading...</p>
   if(errorData) return <p>Error: {errorData}</p>
@@ -55,6 +59,7 @@ export default function FetchTodosAPI(){
             ))
            }
         </ul>
+        <button onClick={() =>setLimitData((prev) => prev + 5) }>Load More</button>
         </>
     )
 }

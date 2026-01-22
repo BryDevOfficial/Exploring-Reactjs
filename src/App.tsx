@@ -6,6 +6,7 @@ import KayakCounter from './week-1/task-project-build/counter-app/KayakCounter'
 import ProductSelector from './week-1/task-project-build/counter-app/ProductSelector'
 import BoatBooking from './week-1/task-project-build/counter-app/BoatBooking';
 import ChurchCounter from './week-1/task-project-build/counter-app/ChurchCounter'
+import FetchTodosAPI from './components/test/FetchTodosAPI'
 
 function App() {
 
@@ -16,8 +17,9 @@ function App() {
      <KayakCounter />
      <ProductSelector />
      <BoatBooking />
-     */}
      <ChurchCounter />
+     */}
+     <FetchTodosAPI />
     </>
   )
 }
