@@ -1,4 +1,4 @@
-import SeaEagleInventory from './week-1/task-project-build/counter-app/SeaEagleInventory'
+import WarehouseManager from './week-1/task-project-build/counter-app/WarehouseManager'
 
 function App() {
   return (
@@ -10,8 +10,9 @@ function App() {
      <BoatBooking />
      <ChurchCounter />
      <FetchTodosAPI />
-     */}
       <SeaEagleInventory />
+     */}
+      <WarehouseManager />
     </>
   )
 }
