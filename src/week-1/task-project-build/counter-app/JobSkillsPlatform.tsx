@@ -13,12 +13,17 @@ export default function JobSkillsPlatform() {
 
   // 3. TODO: Create 'filteredDevs' (Derived State)
   // Logic: Use .filter() on developers to find matches for the 'query'
-  const filteredDevs = []
+  const filteredDevs = developers.filter((item) =>
+    item.skill.toLocaleLowerCase().includes(query.toLocaleLowerCase())
+  )
 
   // 4. TODO: The 'handleEndorse' function
   // Logic: Find the dev by ID and add +1 point (No MAX limit this time!)
   const handleEndorse = (id: number) => {
     // Re-use your .map() + spread skills here!
+    setDevelopers((prev) =>
+      prev.map((dev) => (dev.id === id ? { ...dev, points: dev.points + 1 } : dev))
+    )
   }
 
   return (
@@ -36,7 +41,7 @@ export default function JobSkillsPlatform() {
 
       <div className="space-y-3">
         {/* 5. TODO: Map through filteredDevs instead of developers */}
-        {developers.map((dev) => (
+        {filteredDevs.map((dev) => (
           <div
             key={dev.id}
             className="flex items-center justify-between p-4 bg-slate-800 rounded-2xl"
