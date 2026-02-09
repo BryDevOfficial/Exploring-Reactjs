@@ -1,4 +1,4 @@
-import WarehouseManager from './week-1/task-project-build/counter-app/WarehouseManager'
+import JobSkillsPlatform from './week-1/task-project-build/counter-app/JobSkillsPlatform'
 
 function App() {
   return (
@@ -11,8 +11,9 @@ function App() {
      <ChurchCounter />
      <FetchTodosAPI />
       <SeaEagleInventory />
-     */}
       <WarehouseManager />
+     */}
+      <JobSkillsPlatform />
     </>
   )
 }
