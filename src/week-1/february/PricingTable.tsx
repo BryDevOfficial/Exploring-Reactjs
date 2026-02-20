@@ -46,7 +46,7 @@ export default function PricingTable() {
 
       <div className="space-y-4">
         {/* 5. TODO: Map through displayedProducts */}
-        {products.map((product) => (
+        {displayedProducts.map((product) => (
           <div
             key={product.id}
             className="p-6 bg-slate-800 rounded-3xl border border-slate-700 flex justify-between items-center transition-all hover:border-yellow-500/50"
@@ -63,9 +63,7 @@ export default function PricingTable() {
                       <span className="line-through text-slate-500">
                         ${product.basePrice.toFixed(2)}
                       </span>
-                      <span className="ml-2">
-                        ${displayedProducts.find((p) => p.id === product.id)?.finalPrice.toFixed(2)}
-                      </span>
+                      <span className="ml-2">${product.finalPrice.toFixed(2)}</span>
                     </>
                   ) : (
                     `$${product.basePrice.toFixed(2)}`
