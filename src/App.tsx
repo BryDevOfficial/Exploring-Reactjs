@@ -1,4 +1,4 @@
-import MultiSelectManager from './week-1/february/MultiSelectManager'
+import StatusBoard from './week-1/february/StatusBoard'
 
 function App() {
   return (
@@ -13,8 +13,9 @@ function App() {
       <SeaEagleInventory />
       <WarehouseManager />
       <JobSkillsPlatform />
-     */}
       <MultiSelectManager />
+     */}
+      <StatusBoard />
     </>
   )
 }
