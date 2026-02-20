@@ -18,13 +18,9 @@ export default function MultiSelectManager() {
   // - If the ID is NOT in selectedIds, ADD it (use spread [...prev, id]).
   const toggleSelection = (id: number) => {
     // Write your toggle logic here...
-    setSelectedIds((prev) => {
-      if (prev.includes(id)) {
-        return prev.filter((selectedId) => selectedId !== id)
-      } else {
-        return [...prev, id]
-      }
-    })
+    setSelectedIds((prev) =>
+      prev.includes(id) ? prev.filter((selectedIds) => selectedIds !== id) : [...prev, id]
+    )
   }
 
   // 4. TODO: Calculate 'totalPrice' (Derived State)
