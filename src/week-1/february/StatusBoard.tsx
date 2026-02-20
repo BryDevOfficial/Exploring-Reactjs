@@ -16,19 +16,21 @@ export default function StatusBoard() {
   // - If 'In Progress' -> 'Completed'
   // - If 'Completed' -> 'Pending'
   const cycleStatus = (id: number) => {
-    // Write your rotation logic here...
-    setTasks((prev) => {
-      switch (prev.find((t) => t.id === id)?.status) {
-        case 'Pending':
-          return prev.map((t) => (t.id === id ? { ...t, status: 'In Progress' } : t))
-        case 'In Progress':
-          return prev.map((t) => (t.id === id ? { ...t, status: 'Completed' } : t))
-        case 'Completed':
-          return prev.map((t) => (t.id === id ? { ...t, status: 'Pending' } : t))
-        default:
-          return prev
-      }
-    })
+    setTasks((prev) =>
+      prev.map((t) => {
+        if (t.id !== id) return t // 1. If it's not the target, return it immediately.
+
+        // 2. Determine the next status based on the current one
+        const nextStatus =
+          t.status === 'Pending'
+            ? 'In Progress'
+            : t.status === 'In Progress'
+              ? 'Completed'
+              : 'Pending'
+
+        return { ...t, status: nextStatus } // 3. Return the updated object
+      })
+    )
   }
 
   // 3. TODO: Calculate 'completionRate' (Percentage)
