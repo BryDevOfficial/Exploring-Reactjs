@@ -17,11 +17,21 @@ export default function PricingTable() {
   // - Create a new property called 'finalPrice'
   // - If isMemberMode is true: finalPrice = basePrice * 0.85 (15% off)
   // - If isMemberMode is false: finalPrice = basePrice
-  const displayedProducts = []
+  const displayedProducts = products.map((finalPrice) => {
+    const discount = finalPrice.basePrice * 0.85
+    const noDiscount = finalPrice.basePrice
+    return { ...finalPrice, finalPrice: isMemberMode ? discount : noDiscount } // ibalik niya tanan nga properties sa product tapos i-override lang ang finalPrice depende sa mode
+  })
 
   // 4. TODO: Calculate 'potentialSavings'
   // Logic: The difference between the total base price and total final price.
-  const potentialSavings = 0
+  const potentialSavings = products.reduce((acc, product) => {
+    const displayedProduct = displayedProducts.find((p) => p.id === product.id)
+    return (
+      acc +
+      (product.basePrice - (displayedProduct ? displayedProduct.finalPrice : product.basePrice))
+    )
+  }, 0)
 
   return (
     <div className="p-10 max-w-xl mx-auto bg-slate-900 text-white rounded-[3rem] shadow-2xl border-t-4 border-yellow-500">
@@ -52,7 +62,20 @@ export default function PricingTable() {
               </p>
               <div className="flex items-center gap-2">
                 {/* 6. TODO: If member mode is on, show the old price with a strikethrough */}
-                <h2 className="text-3xl font-black font-mono">$???</h2>
+                <h2 className="text-3xl font-black font-mono">
+                  {isMemberMode ? (
+                    <>
+                      <span className="line-through text-slate-500">
+                        ${product.basePrice.toFixed(2)}
+                      </span>
+                      <span className="ml-2">
+                        ${displayedProducts.find((p) => p.id === product.id)?.finalPrice.toFixed(2)}
+                      </span>
+                    </>
+                  ) : (
+                    `$${product.basePrice.toFixed(2)}`
+                  )}
+                </h2>
               </div>
             </div>
             {isMemberMode && (
