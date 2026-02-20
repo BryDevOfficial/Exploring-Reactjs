@@ -25,7 +25,8 @@ export default function PayrollFinalizer() {
     setStaff((prev) =>
       prev.map((person) => {
         // Your logic here...
-        return person
+        const isEligible = person.status === 'Unpaid' && !person.isBlocked
+        return isEligible ? { ...person, status: 'Paid' } : person
       })
     )
   }
