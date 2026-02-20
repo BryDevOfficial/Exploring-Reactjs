@@ -17,21 +17,16 @@ export default function PricingTable() {
   // - Create a new property called 'finalPrice'
   // - If isMemberMode is true: finalPrice = basePrice * 0.85 (15% off)
   // - If isMemberMode is false: finalPrice = basePrice
-  const displayedProducts = products.map((finalPrice) => {
-    const discount = finalPrice.basePrice * 0.85
-    const noDiscount = finalPrice.basePrice
-    return { ...finalPrice, finalPrice: isMemberMode ? discount : noDiscount } // ibalik niya tanan nga properties sa product tapos i-override lang ang finalPrice depende sa mode
-  })
+  const displayedProducts = products.map((product) => ({
+    ...product,
+    finalPrice: isMemberMode ? product.basePrice * 0.85 : product.basePrice,
+  }))
 
   // 4. TODO: Calculate 'potentialSavings'
   // Logic: The difference between the total base price and total final price.
-  const potentialSavings = products.reduce((acc, product) => {
-    const displayedProduct = displayedProducts.find((p) => p.id === product.id)
-    return (
-      acc +
-      (product.basePrice - (displayedProduct ? displayedProduct.finalPrice : product.basePrice))
-    )
-  }, 0)
+  const potentialSavings = isMemberMode
+    ? products.reduce((acc, p) => acc + p.basePrice * 0.15, 0)
+    : 0
 
   return (
     <div className="p-10 max-w-xl mx-auto bg-slate-900 text-white rounded-[3rem] shadow-2xl border-t-4 border-yellow-500">
