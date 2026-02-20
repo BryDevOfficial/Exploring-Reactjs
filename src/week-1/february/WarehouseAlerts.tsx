@@ -16,13 +16,11 @@ export default function WarehouseAlerts() {
   // Logic:
   // - If showCriticalOnly is true: .filter() for count <= 5
   // - If false: return the whole 'stock' array
-  const visibleStock = stock.filter((s) => {
-    return showCriticalOnly ? s.count <= 5 : s.count
-  })
+  const visibleStock = showCriticalOnly ? stock.filter((s) => s.count <= 5) : stock
 
   // 4. TODO: Calculate 'criticalCount' (Derived State)
   // Logic: Count how many items in the ORIGINAL 'stock' have a count <= 5
-  const criticalCount = visibleStock.length
+  const criticalCount = stock.filter((s) => s.count <= 5).length
 
   return (
     <div className="p-8 max-w-lg mx-auto bg-white rounded-3xl shadow-xl border-t-8 border-red-500">
