@@ -22,12 +22,12 @@ export default function BonusManager() {
   // - Otherwise, return the employee unchanged.
   const applyBonus = () => {
     // Write the bulk update logic here...
-    setEmployees((prevEmployees) => {
-      return prevEmployees.map((bonus) => {
-        const found = visibleEmployees.find((emp) => emp.id === bonus.id)
-        return found ? { ...bonus, salary: bonus.salary + 500 } : bonus
+    setEmployees((prev) =>
+      prev.map((emp) => {
+        const isEligible = filterDept === 'All' || emp.dept === filterDept
+        return isEligible ? { ...emp, salary: emp.salary + 500 } : emp
       })
-    })
+    )
   }
 
   return (
