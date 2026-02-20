@@ -16,11 +16,13 @@ export default function WarehouseAlerts() {
   // Logic:
   // - If showCriticalOnly is true: .filter() for count <= 5
   // - If false: return the whole 'stock' array
-  const visibleStock = []
+  const visibleStock = stock.filter((s) => {
+    return showCriticalOnly ? s.count <= 5 : s.count
+  })
 
   // 4. TODO: Calculate 'criticalCount' (Derived State)
   // Logic: Count how many items in the ORIGINAL 'stock' have a count <= 5
-  const criticalCount = 0
+  const criticalCount = visibleStock.length
 
   return (
     <div className="p-8 max-w-lg mx-auto bg-white rounded-3xl shadow-xl border-t-8 border-red-500">
@@ -53,9 +55,12 @@ export default function WarehouseAlerts() {
             <div className="flex items-center gap-3">
               {/* 6. TODO: Conditional Rendering */}
               {/* If item.count <= 5, show this badge */}
-              <span className="text-[9px] bg-red-100 text-red-600 px-2 py-1 rounded-md font-black uppercase">
-                Low
-              </span>
+
+              {item.count <= 5 && (
+                <span className="text-[9px] bg-red-100 text-red-600 px-2 py-1 rounded-md font-black uppercase">
+                  Low
+                </span>
+              )}
 
               <span className={`font-mono font-black text-lg`}>{item.count}</span>
             </div>
