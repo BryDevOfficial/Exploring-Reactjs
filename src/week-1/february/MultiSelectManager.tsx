@@ -37,7 +37,7 @@ export default function MultiSelectManager() {
         {products.map((product) => {
           // 5. TODO: Create a boolean 'isSelected'
           // Logic: Check if selectedIds includes this product.id
-          const isSelected = false
+          const isSelected = selectedIds.includes(product.id)
 
           return (
             <div
