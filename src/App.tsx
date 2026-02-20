@@ -1,4 +1,4 @@
-import StatusBoard from './week-1/february/StatusBoard'
+import PricingTable from './week-1/february/PricingTable'
 
 function App() {
   return (
@@ -14,8 +14,9 @@ function App() {
       <WarehouseManager />
       <JobSkillsPlatform />
       <MultiSelectManager />
-     */}
       <StatusBoard />
+     */}
+      <PricingTable />
     </>
   )
 }
