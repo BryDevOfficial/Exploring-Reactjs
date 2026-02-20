@@ -1,10 +1,11 @@
-import PayrollDashboard from './week-1/february/PayrollDashboard'
+import BonusManager from './week-1/february/BonusManager'
 
 function App() {
   return (
     <>
-      <PayrollDashboard />
+      <BonusManager />
       {/*
+      <PayrollDashboard />
       <WarehouseAlerts />
      <EquipmentCounter />
      <KayakCounter />
