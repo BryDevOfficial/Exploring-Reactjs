@@ -17,11 +17,27 @@ export default function StatusBoard() {
   // - If 'Completed' -> 'Pending'
   const cycleStatus = (id: number) => {
     // Write your rotation logic here...
+    setTasks((prev) => {
+      switch (prev.find((t) => t.id === id)?.status) {
+        case 'Pending':
+          return prev.map((t) => (t.id === id ? { ...t, status: 'In Progress' } : t))
+        case 'In Progress':
+          return prev.map((t) => (t.id === id ? { ...t, status: 'Completed' } : t))
+        case 'Completed':
+          return prev.map((t) => (t.id === id ? { ...t, status: 'Pending' } : t))
+        default:
+          return prev
+      }
+    })
   }
 
   // 3. TODO: Calculate 'completionRate' (Percentage)
   // Logic: (Number of 'Completed' tasks / total tasks) * 100
-  const completionRate = 0
+  //const completionRate = tasks.length > 0 ? (tasks.filter((t) => t.status === 'Completed').length / tasks.length) * 100 : 0
+  const completionRate =
+    tasks.length > 0
+      ? (tasks.reduce((acc, t) => acc + (t.status === 'Completed' ? 1 : 0), 0) / tasks.length) * 100
+      : 0
 
   return (
     <div className="p-10 max-w-lg mx-auto bg-slate-50 rounded-[3rem] shadow-xl border-b-8 border-indigo-500">
@@ -41,7 +57,9 @@ export default function StatusBoard() {
 
               {/* 4. TODO: Apply dynamic colors based on task.status */}
               {/* Green for Completed, Yellow for In Progress, Slate for Pending */}
-              <span className={`text-[10px] font-black px-3 py-1 rounded-full uppercase`}>
+              <span
+                className={`text-[10px] font-black px-3 py-1 rounded-full uppercase ${task.status === 'Completed' ? 'bg-green-100 text-green-800' : task.status === 'In Progress' ? 'bg-yellow-100 text-yellow-800' : 'bg-slate-100 text-slate-800'}`}
+              >
                 {task.status}
               </span>
             </div>
