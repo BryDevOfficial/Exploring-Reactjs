@@ -1,8 +1,9 @@
-import PricingTable from './week-1/february/PricingTable'
+import WarehouseAlerts from './week-1/february/WarehouseAlerts'
 
 function App() {
   return (
     <>
+      <WarehouseAlerts />
       {/*
      <EquipmentCounter />
      <KayakCounter />
@@ -15,8 +16,8 @@ function App() {
       <JobSkillsPlatform />
       <MultiSelectManager />
       <StatusBoard />
-     */}
       <PricingTable />
+     */}
     </>
   )
 }
