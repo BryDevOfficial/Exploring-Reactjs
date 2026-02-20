@@ -1,10 +1,11 @@
-import WarehouseAlerts from './week-1/february/WarehouseAlerts'
+import PayrollDashboard from './week-1/february/PayrollDashboard'
 
 function App() {
   return (
     <>
-      <WarehouseAlerts />
+      <PayrollDashboard />
       {/*
+      <WarehouseAlerts />
      <EquipmentCounter />
      <KayakCounter />
      <ProductSelector />
