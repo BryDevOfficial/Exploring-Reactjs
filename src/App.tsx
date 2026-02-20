@@ -1,4 +1,4 @@
-import JobSkillsPlatform from './week-1/task-project-build/counter-app/JobSkillsPlatform'
+import MultiSelectManager from './week-1/february/MultiSelectManager'
 
 function App() {
   return (
@@ -12,8 +12,9 @@ function App() {
      <FetchTodosAPI />
       <SeaEagleInventory />
       <WarehouseManager />
-     */}
       <JobSkillsPlatform />
+     */}
+      <MultiSelectManager />
     </>
   )
 }
