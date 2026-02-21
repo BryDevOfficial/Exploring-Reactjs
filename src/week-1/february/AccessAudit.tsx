@@ -17,7 +17,7 @@ export default function AccessAudit() {
 
   // 2. TODO: Calculate 'blockedCount' (Derived State)
   // Logic: Count users in the ORIGINAL list who are 'Pending' but have accountAge < 30
-  const blockedCount = 0
+  const blockedCount = users.filter((c) => c.status === 'Pending' && c.accountAge < 30).length
 
   // 3. TODO: Function 'approveEligible'
   // Logic: Map through ORIGINAL users.
