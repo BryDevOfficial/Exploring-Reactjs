@@ -1,10 +1,11 @@
-import PayrollFinalizer from './week-1/february/PayrollFinalizer'
+import SprintManager from './week-1/february/SprintManager'
 
 function App() {
   return (
     <>
-      <PayrollFinalizer />
+      <SprintManager />
       {/*
+      <PayrollFinalizer />
       <BonusManager />
       <PayrollDashboard />
       <WarehouseAlerts />
