@@ -15,12 +15,12 @@ export default function SprintManager() {
   // 2. TODO: Create 'visibleTasks' (Derived State)
   // Logic: Filter tasks by the selected priority
   const visibleTasks = tasks.filter((t) => {
-    return filterPriority === 'All' ? tasks : t.priority === filterPriority
+    return filterPriority === 'All' ? true : t.priority === filterPriority
   })
 
   // 3. TODO: Calculate 'highPriorityCount' (Derived State)
   // Logic: Count how many tasks total are 'High' priority (ignore the filter)
-  const highPriorityCount = tasks.filter((t) => t.priority === 'High')
+  const highPriorityCount = tasks.filter((t) => t.priority === 'High' && t.status === 'Todo').length
 
   // 4. TODO: Function 'completeVisibleTasks'
   // Logic: Map through ORIGINAL tasks.
@@ -30,8 +30,9 @@ export default function SprintManager() {
     // Your logic here...
     setTasks((prev) =>
       prev.map((t) => {
-        const stat = visibleTasks && t.status === 'Todo' && t.isLocked === false
-        return stat ? { ...t, status: 'Done' } : t
+        const isTargeted = filterPriority === 'All' || t.priority === filterPriority
+        const canComplete = isTargeted && t.status === 'Todo' && !t.isLocked
+        return canComplete ? { ...t, status: 'Done' } : t
       })
     )
   }
@@ -42,7 +43,7 @@ export default function SprintManager() {
         <div>
           <h1 className="text-2xl font-black text-slate-800 tracking-tight">SPRINT BOARD</h1>
           <p className="text-xs font-bold text-red-500 uppercase">
-            {highPriorityCount.length} CRITICAL TASKS REMAINING
+            {highPriorityCount} CRITICAL TASKS REMAINING
           </p>
         </div>
 
