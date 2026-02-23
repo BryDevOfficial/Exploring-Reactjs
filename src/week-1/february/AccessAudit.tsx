@@ -27,6 +27,15 @@ export default function AccessAudit() {
   // - Their accountAge is >= 30
   const approveEligible = () => {
     // setUsers logic here...
+    setUsers((prev) =>
+      prev.map((user) => {
+        const isEligible =
+          (filterLevel === 'All' || user.level === filterLevel) &&
+          user.status === 'Pending' &&
+          user.accountAge >= 30
+        return isEligible ? { ...user, status: 'Approved' } : user
+      })
+    )
   }
 
   return (
