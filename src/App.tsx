@@ -1,10 +1,11 @@
-import AccessAudit from './week-1/february/AccessAudit'
+import StockManager from './week-1/february/StockManager'
 
 function App() {
   return (
     <>
-      <AccessAudit />
+      <StockManager />
       {/*
+      <AccessAudit />
       <SprintManager />
       <PayrollFinalizer />
       <BonusManager />
