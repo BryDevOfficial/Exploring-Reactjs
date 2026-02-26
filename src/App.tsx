@@ -1,10 +1,11 @@
-import StockManager from './week-1/february/StockManager'
+import OrderManager from './week-1/february/OrderManager'
 
 function App() {
   return (
     <>
-      <StockManager />
+      <OrderManager />
       {/*
+      <StockManager />
       <AccessAudit />
       <SprintManager />
       <PayrollFinalizer />
