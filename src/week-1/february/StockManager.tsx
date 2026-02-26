@@ -7,6 +7,7 @@ export default function StockManager() {
     { id: 3, name: 'Coolant', category: 'Fluids', count: 0, isExpired: true }, // Expired!
     { id: 4, name: 'Spark Plugs', category: 'Parts', count: 3, isExpired: false },
     { id: 5, name: 'Old Battery', category: 'Electrical', count: 1, isExpired: true }, // Expired!
+    { id: 6, name: 'Disk Brake', category: 'Parts', count: 4, isExpired: true }, // Expired!
   ])
 
   const [search, setSearch] = useState('')
@@ -16,7 +17,12 @@ export default function StockManager() {
   // Logic:
   // - Kinahanglan mo-match ang name sa 'search' term.
   // - Kung ang 'showInStockOnly' kay true, i-filter tong count > 0 lang.
-  const filteredItems = []
+
+  const filteredItems = inventory.filter((item) => {
+    const matchSearch = item.name.toLocaleLowerCase().includes(search.toLocaleLowerCase())
+    const matchStock = showInStockOnly ? item.count > 0 : true
+    return matchSearch && matchStock
+  })
 
   // 2. TODO: Function 'restockLowStock'
   // Logic: Map through ORIGINAL inventory.
@@ -26,6 +32,14 @@ export default function StockManager() {
   // - DILI siya Expired (isExpired === false)
   const restockLowStock = () => {
     // setInventory logic here...
+    setInventory((prevItem) =>
+      prevItem.map((f) => {
+        const isVisible =
+          f.name.toLowerCase().includes(search.toLowerCase()) && (!showInStockOnly || f.count > 0)
+        const restock = isVisible && f.count < 5 && !f.isExpired
+        return restock ? { ...f, count: f.count + 10 } : f
+      })
+    )
   }
 
   return (
